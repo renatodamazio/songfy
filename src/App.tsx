@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import PlayerBar from "./components/player/PlayerBar";
 
 import Home from "./pages/Home";
+import Results from "./pages/Results";
 import Search from "./pages/Search";
 
 function App(): any {
@@ -13,6 +14,7 @@ function App(): any {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/results/*" element={<Results />} />
       </Routes>
 
       <PlayerBar />
