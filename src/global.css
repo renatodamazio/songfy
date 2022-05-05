@@ -19,5 +19,11 @@ body,
 }
 
 a {
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) .50s;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  color: theme("colors.light");
 }
+
+a:hover {
+  color: theme("colors.pink");
+}
+

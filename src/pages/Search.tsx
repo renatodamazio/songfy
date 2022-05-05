@@ -24,11 +24,13 @@ export default function Search() {
   const [searchState, setSearchState] = useState<number>(0);
   const [artists, setArtists] = useState([]);
   const [inputSearchValue, setInputSearchValue] = useState<string>("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, {}] = useSearchParams();
 
   useEffect(() => {
     const searchValue = searchParams.get("search") as string;
-    setInputSearchValue(searchValue);
+    if (typeof searchValue === "string") {
+      setInputSearchValue(searchValue);
+    }
   }, []);
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function Search() {
       <DebounceInput
         type="search"
         value={inputSearchValue}
-        className="w-full p-2 rounded-lg text-black font-bold border-2 border-black-500 focus:border-purple transition-all focus:shadow-pink shadow-lg"
+        className="w-full p-4 rounded-lg text-black font-bold border-2 border-black-500 focus:border-purple transition-all focus:shadow-pink shadow-lg"
         minLength={0}
         debounceTimeout={500}
         onChange={async (event) => await SearchArtists(event.target.value)}
@@ -85,7 +87,12 @@ export default function Search() {
           artists?.map((item: Artist, key: number) => {
             return (
               <li className="w-full p-2 border-1 border-b-purple" key={key}>
-                <Link to={`results/${item.name}`} className="hover:text-pink w-full inline-block">{item.name}</Link>
+                <Link
+                  to={`results/${item.name}`}
+                  className="w-full inline-block"
+                >
+                  {item.name}
+                </Link>
               </li>
             );
           })}
