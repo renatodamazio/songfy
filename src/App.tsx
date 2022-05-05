@@ -10,7 +10,7 @@ import Title from "./components/Title";
 function App(): any {
   const location = useLocation();
   return (
-    <main className="w-screen h-screen bg-black text-light flex flex-1 flex-col">
+    <main className="w-screen h-screen bg-black text-light flex flex-1 flex-col overflow-auto">
       <Search />
       <Title text={location.pathname} />
       <Routes>
