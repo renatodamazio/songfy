@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import PlayerBar from "./components/player/PlayerBar";
 
@@ -18,8 +18,6 @@ function App(): any {
         <Route path="/search" element={<Search />} />
         <Route path="/results/*" element={<Results />} />
       </Routes>
-
-      <PlayerBar />
     </main>
   );
 }

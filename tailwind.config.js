@@ -2,7 +2,7 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      black: "#1B1623",
+      black: "#111827",
       light: "#fff",
       purple: "#6C00FF",
       pink: "#FC00B9",
