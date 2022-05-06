@@ -6,12 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../store/reducers/resultReducer";
 
-interface resultStateInterface {
-  results: {
-    loading: boolean,
-    artist: string
-  }
-};
+import resultStateInterface from "../store/interface/resultsInterface";
 
 export default function Results(): any {
   const [albuns, setAlbuns] = useState<any>([]);
