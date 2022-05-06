@@ -3,12 +3,23 @@ import getAlbuns from "../api/getAlbuns";
 import getAlbumTrack from "../api/getAlbumTrack";
 import AlbumTracks from "../components/AlbumTracks";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../store/reducers/resultReducer";
+
+interface resultStateInterface {
+  results: {
+    loading: boolean,
+    artist: string
+  }
+};
 
 export default function Results(): any {
   const [albuns, setAlbuns] = useState<any>([]);
   const [albumTracks, setAlbumTracks] = useState<any>([]);
   const [albumName, setAlbumName] = useState([]);
   const location = useLocation();
+  const dispatch = useDispatch();
+  const loadingStatus = useSelector((state:resultStateInterface) => state?.results?.loading);
 
   const getArtistAlbum = async () => {
     const query = location.pathname.replace("/results/", "");
@@ -31,6 +42,7 @@ export default function Results(): any {
       }
 
       setAlbumTracks(albums);
+      dispatch(setLoading(false));
     } catch (err) {}
   };
 
@@ -54,16 +66,19 @@ export default function Results(): any {
   return (
     <>
       <ul>
-        {albumTracks.length && albumTracks.map((album: any, key: number) => (
-          <li key={key}>
-            <AlbumTracks
-              image={album?.image}
-              artist={album?.artist}
-              album={album?.name}
-              tracks={album?.tracks}
-            />
-          </li>
-        ))}
+        {
+          !loadingStatus ? 
+            albumTracks.length && albumTracks.map((album: any, key: number) => (
+              <li key={key}>
+                <AlbumTracks
+                  image={album?.image}
+                  artist={album?.artist}
+                  album={album?.name}
+                  tracks={album?.tracks}
+                />
+              </li>
+            )) : "Loading..."
+        }
       </ul>
     </>
   );

@@ -3,6 +3,8 @@ import { useSearchParams, Link } from "react-router-dom";
 import getArtists from "../api/searchArtist";
 import { DebounceInput } from "react-debounce-input";
 import cleanStrings from "../utils/cleanStrings";
+import { useDispatch } from "react-redux";
+import { setLoading } from "../store/reducers/resultReducer";
 interface Artist {
   name: string;
   image: [];
@@ -25,6 +27,7 @@ export default function Search() {
   const [artists, setArtists] = useState([]);
   const [inputSearchValue, setInputSearchValue] = useState<string>("");
   const [searchParams, {}] = useSearchParams();
+  const dipatch = useDispatch();
 
   useEffect(() => {
     const searchValue = searchParams.get("search") as string;
@@ -75,7 +78,8 @@ export default function Search() {
   const redirectToResultPage = () => {
     setArtists([]);
     setResultArtist([]);
-  }
+    dipatch(setLoading(true));
+  };
 
   return (
     <div>

@@ -15,8 +15,8 @@ const resultSlice = createSlice({
   initialState,
 
   reducers: {
-    setLoading: (state: any) => {
-      state.loading = state;
+    setLoading: (state: any, action:any) => {
+      state.loading = action.payload;
     },
     setArtist: (state: any) => {
       return {
@@ -27,6 +27,6 @@ const resultSlice = createSlice({
   },
 });
 
-export const { setLoading } = resultSlice.actions;
+export const { setLoading, setArtist } = resultSlice.actions;
 
 export default resultSlice.reducer;
