@@ -72,6 +72,11 @@ export default function Search() {
     return setResultArtist(results?.artist);
   };
 
+  const redirectToResultPage = () => {
+    setArtists([]);
+    setResultArtist([]);
+  }
+
   return (
     <div>
       <DebounceInput
@@ -89,6 +94,7 @@ export default function Search() {
               <li className="w-full p-2 border-1 border-b-purple" key={key}>
                 <Link
                   to={`results/${item.name}`}
+                  onClick={redirectToResultPage}
                   className="w-full inline-block"
                 >
                   {item.name}

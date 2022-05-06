@@ -12,34 +12,41 @@ export default function AlbumTracks(props: AlbumInterface) {
   const tracks: any = props.tracks;
 
   const getImage = (image: any) => {
-    for (const key in image[2]) {
-      if (key === "#text") {
-        return image[2][key];
+    if (typeof image === "object" && image.length > 0) {
+      for (const key in image[3]) {
+        if (key === "#text") {
+          return image[3][key];
+        }
       }
     }
     return "";
   };
   return (
-    <div className="flex">
-      <div className="p-2">
-        <Image
-          src={getImage(props.image)}
-          alt={props.artist}
-          className="rounded-md"
-        />
+    tracks?.track?.length > 0 ? (
+      <div className="flex mb-6">
+        <div className="p-2  w-96 min-w-min">
+          <Image
+            src={getImage(props.image)}
+            alt={props.artist}
+            className="rounded-md  w-96"
+          />
+        </div>
+        <div className="p-4">
+          <h1 className="text-4xl font-bold mb-3">{props.album}</h1>
+          <ul>
+            {tracks?.track.map((item: any, key: number) => (
+              <li className="w-full inline-block" key={key}>
+                <Link
+                  to="#!"
+                  className="w-full py-2 px-2 inline-block hover:bg-pink rounded-md hover:bg-opacity-25"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="p-4">
-        <h1 className="text-4xl font-bold mb-3">{props.album}</h1>
-        <ul>
-          {tracks?.track.map((item: any) => (
-            <li className="w-full inline-block">
-              <Link to="#!" className="w-full py-2 px-2 inline-block hover:bg-pink rounded-md hover:bg-opacity-25">
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    ) : <></>
   );
 }

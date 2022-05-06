@@ -5,7 +5,7 @@ export default function Title(props: any) {
     let text = query.replace("/results/", "");
     text.replace("/search/", "");
     text.replace("/albuns/", "");
-
+    text.replace(/%20{1}/gi, "");
     return text;
   };
   return (
