@@ -18,6 +18,7 @@ function App(): any {
         <Route path="/search" element={<Search />} />
         <Route path="/results/*" element={<Results />} />
       </Routes>
+      <PlayerBar />
     </main>
   );
 }

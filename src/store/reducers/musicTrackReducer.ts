@@ -1,11 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { musicTrackInterface } from "../interface/musicInterface";
 
-interface sliceInterface {
-  track: any[];
-}
-
-const initialState: sliceInterface = {
-  track: [],
+const initialState: musicTrackInterface = {
+  track: [{}],
 };
 
 const musicTrack = createSlice({
@@ -13,10 +10,7 @@ const musicTrack = createSlice({
   initialState,
   reducers: {
     setTrack: (state: any, action: any) => {
-      return {
-        ...state,
-        track: action.payload,
-      };
+      state.track.push(action.payload);
     },
   },
 });

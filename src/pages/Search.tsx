@@ -3,7 +3,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import getArtists from "../api/searchArtist";
 import { DebounceInput } from "react-debounce-input";
 import cleanStrings from "../utils/cleanStrings";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLoading } from "../store/reducers/resultReducer";
 
 interface Artist {
