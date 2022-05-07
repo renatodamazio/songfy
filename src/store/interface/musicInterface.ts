@@ -1,10 +1,3 @@
-interface playing {
-  name: string;
-  image?: string;
-  url: string;
-  timer: string;
-}
-
 interface musicTrackInterface {
   track: [
     {
@@ -14,6 +7,13 @@ interface musicTrackInterface {
       image?: string;
     }
   ];
+
+  playTrack: {
+    name?: string;
+    image?: string;
+    url?: string;
+    timer?: string;
+  };
 }
 
-export type { musicTrackInterface, playing };
+export type { musicTrackInterface };

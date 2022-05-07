@@ -5,7 +5,7 @@ import AlbumTracks from "../components/AlbumTracks";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../store/reducers/resultReducer";
-
+import { setTrack } from "../store/reducers/musicTrackReducer";
 import resultStateInterface from "../store/interface/resultsInterface";
 
 export default function Results(): any {
@@ -14,7 +14,9 @@ export default function Results(): any {
   const [albumName, setAlbumName] = useState([]);
   const location = useLocation();
   const dispatch = useDispatch();
-  const loadingStatus = useSelector((state:resultStateInterface) => state?.results?.loading);
+  const loadingStatus = useSelector(
+    (state: resultStateInterface) => state?.results?.loading
+  );
 
   const getArtistAlbum = async () => {
     const query = location.pathname.replace("/results/", "");
@@ -47,7 +49,7 @@ export default function Results(): any {
 
   useEffect(() => {
     getArtistAlbum();
-  }, [location])
+  }, [location]);
 
   useEffect(() => {
     if (typeof albuns === "object" && albuns?.album) {
@@ -61,19 +63,20 @@ export default function Results(): any {
   return (
     <>
       <ul>
-        {
-          !loadingStatus ? 
-            albumTracks.length && albumTracks.map((album: any, key: number) => (
+        {!loadingStatus
+          ? albumTracks.length &&
+            albumTracks.map((album: any, key: number) => (
               <li key={key}>
                 <AlbumTracks
+                  onClick={() => dispatch(setTrack(album))}
                   image={album?.image}
                   artist={album?.artist}
                   album={album?.name}
                   tracks={album?.tracks}
                 />
               </li>
-            )) : "Loading..."
-        }
+            ))
+          : "Loading..."}
       </ul>
     </>
   );
