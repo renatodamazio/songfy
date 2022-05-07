@@ -3,7 +3,7 @@ import { musicTrackInterface } from "../interface/musicInterface";
 
 const initialState: musicTrackInterface = {
   track: [{}],
-  playTrack: {}
+  playTrack: [{}],
 };
 
 const musicTrack = createSlice({
@@ -14,12 +14,12 @@ const musicTrack = createSlice({
       state.track.push(action.payload);
     },
 
-    setPlayTrack: (state:any, action:any) => {
-      state.playTrack = action.payload
-    }
+    setPlayTrack: (state: any, action: any) => {
+      state.playTrack.push(action.payload);
+    },
   },
 });
 
-export const { setTrack } = musicTrack.actions;
+export const { setTrack, setPlayTrack } = musicTrack.actions;
 
 export default musicTrack.reducer;

@@ -8,12 +8,14 @@ interface musicTrackInterface {
     }
   ];
 
-  playTrack: {
-    name?: string;
-    image?: string;
-    url?: string;
-    timer?: string;
-  };
+  playTrack: [
+    {
+      name?: string;
+      image?: string;
+      url?: string;
+      timer?: string;
+    }
+  ];
 }
 
 export type { musicTrackInterface };
