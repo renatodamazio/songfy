@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideo } from "../../store/reducers/videoPlayerReducer";
 import videointerface from "../../store/interface/videointerface";
-
 declare global {
   interface Window {
     YT: any;
@@ -19,10 +18,8 @@ export default function VideoPlayer() {
   const currentTrack = useSelector((state: any) => state.tracks.playTrack);
   const dispatch = useDispatch();
 
-  let player: any;
-
   const setPlayerVideoData = () => {
-    const video = youtubeResults[0];
+    const video = youtubeResults ? youtubeResults[0] : false;
 
     if (typeof video === "object") {
       const videoId = video.id.videoId as string;
@@ -34,13 +31,14 @@ export default function VideoPlayer() {
         status: 0,
         timer: "00:00",
       });
+
+      loadVideoById(videoId);
     }
   };
 
   useEffect(() => {
     if (typeof currentVideo === "object") {
       dispatch(setVideo(currentVideo));
-      loadVideoById();
     }
   }, [currentVideo]);
 
@@ -64,20 +62,24 @@ export default function VideoPlayer() {
     }
   };
 
-  const loadVideoById = () => {
+  const loadVideoById = (query:any) => {
     if (typeof control === "object") {
-      control.loadVideoById(currentVideo?.videoId)
+      control.loadVideoById(query ? query : currentVideo?.videoId);
     }
-  }
-
-  const onPlayerReady = () => {
-    PlayVideo();
   };
 
-  const onPlayerStateChange = () => {};
+  const onPlayerReady = () => {
+    // PlayVideo();
+  };
+
+  const onPlayerStateChange = (event: any) => {
+    const copyCurrentVideo: any = { ...currentVideo };
+    copyCurrentVideo.status = event.data;
+    setCurrentVideo(copyCurrentVideo);
+  };
 
   const onYouTubeIframeAPIReady = () => {
-    player = new window.YT.Player("songfy-yt-video-player", {
+    const player = new window.YT.Player("songfy-yt-video-player", {
       height: "360",
       width: "640",
       videoId: currentVideo?.videoId ? currentVideo?.videoId : "",
