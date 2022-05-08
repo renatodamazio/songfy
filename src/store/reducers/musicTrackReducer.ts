@@ -16,7 +16,7 @@ const musicTrack = createSlice({
 
     setPlayTrack: (state: any, action: any) => {
       state.playTrack.push(action.payload);
-    },
+    }
   },
 });
 

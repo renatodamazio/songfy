@@ -1,9 +1,11 @@
 const getYoutubeVideo = (param: string) => {
-  fetch(
+  return fetch(
     `https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_YT_KEY}&q=${param}`
   )
     .then((json) => json.json())
-    .then((resp) => console.log(resp));
+    .then((resp) => {
+      return resp;
+    });
 };
 
 export default getYoutubeVideo;
