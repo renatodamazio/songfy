@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import getYoutubeVideo from "../../api/getYoutubeVideo";
 
 export default function PlayerBar(props: any) {
   const getPlayTracks = useSelector((state: any) => state.tracks.playTrack);
@@ -11,8 +12,13 @@ export default function PlayerBar(props: any) {
   }, [getPlayTracks]);
 
   useEffect(() => {
-    console.log(playing);
+    if (playing?.artist) {
+      getYoutubeVideo(playing?.artist?.name + "+" + playing?.name);
+    }
   }, [playing]);
-
-  return <div>{playing?.name} {playing?.artist?.name}</div>;
+  return (
+    <div>
+      {playing?.name} {playing?.artist?.name}
+    </div>
+  );
 }
