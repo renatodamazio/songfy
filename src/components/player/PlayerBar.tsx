@@ -25,7 +25,7 @@ export default function PlayerBar(props: any) {
     }
   }, [playing]);
   return (
-    <div>
+    <div className="py-8 px-4 w-screen">
       <VideoPlayer />
       {playing?.name} {playing?.artist?.name}
     </div>

@@ -10,14 +10,16 @@ import Title from "./components/Title";
 function App(): any {
   const location = useLocation();
   return (
-    <main className="w-screen h-screen bg-black text-light flex flex-1 flex-col overflow-auto">
+    <main className="w-screen h-screen bg-black text-light flex flex-1 flex-col overflow-auto flex-grow-1">
       <Search />
-      <Title text={location.pathname} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/results/*" element={<Results />} />
-      </Routes>
+      <section className="h-full overflow-auto">
+        <Title text={location.pathname} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/results/*" element={<Results />} />
+        </Routes>
+      </section>
       <PlayerBar />
     </main>
   );
