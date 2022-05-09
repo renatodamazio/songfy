@@ -1,5 +1,6 @@
 interface videoPlayerInterface {
     name: string;
+    music: string;
     videoId: string;
     status: number;
     timer: string;

@@ -3,7 +3,7 @@ import Image from "./Image";
 import { Link } from "react-router-dom";
 import { setTrack, setPlayTrack } from "../store/reducers/musicTrackReducer";
 import { useDispatch } from "react-redux";
-import resultStateInterface from "../store/interface/resultsInterface";
+import { Play } from "./buttons";
 
 interface AlbumInterface {
   image: string;
@@ -47,9 +47,13 @@ export default function AlbumTracks(props: AlbumInterface) {
             >
               <Link
                 to="#!"
-                onClick={() => dispatch(setPlayTrack(item))}
-                className="w-full py-2 px-2 inline-block hover:bg-pink rounded-md hover:bg-opacity-25"
+                className="w-full py-2 px-2 hover:bg-pink rounded-md hover:bg-opacity-25 flex"
               >
+                <Play
+                  size="small"
+                  onClick={() => dispatch(setPlayTrack(item))}
+                />
+                &nbsp;&nbsp;
                 {item.name}
               </Link>
             </li>
