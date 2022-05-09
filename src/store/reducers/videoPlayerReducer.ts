@@ -3,6 +3,7 @@ import videoPlayerInterface from "../interface/videointerface";
 
 const initialState: videoPlayerInterface = {
   name: "",
+  music: "",
   videoId: "",
   status: 0,
   timer: "",
