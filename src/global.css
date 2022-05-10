@@ -18,13 +18,3 @@ body,
   outline: none;
 }
 
-a {
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
-  letter-spacing: 2px;
-  color: theme("colors.light");
-}
-
-a:hover {
-  color: theme("colors.pink");
-}
-
