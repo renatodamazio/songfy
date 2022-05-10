@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import getYoutubeVideo from "../../api/getYoutubeVideo";
+import {getYoutubeVideoMock} from "../../api/getYoutubeVideo";
 
 declare global {
   interface Window {
@@ -16,7 +16,7 @@ export default function VideoPlayer() {
 
   const getYoutubeVideoInformations = async () => {
     const musicPlayer = playTrack[playTrack.length - 1];
-    const video = await getYoutubeVideo(
+    const video = await getYoutubeVideoMock(
       musicPlayer.artist.name + musicPlayer.name
     );
 
@@ -26,9 +26,9 @@ export default function VideoPlayer() {
     }
 
     setMusic({
-      name: musicPlayer.name,
-      artist: musicPlayer.artist.name,
-      status: 0,
+      name: musicPlayer?.name,
+      artist: musicPlayer?.artist?.name,
+      status: 0, 
       videoId: video?.items[0]?.id?.videoId,
       timer: "00:00",
     });
@@ -44,7 +44,7 @@ export default function VideoPlayer() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
   };
 
-  const onYouTubeIframeAPIReady = () => {
+  const onYouTubeIframeAPIReady = () => {  
     const player = new window.YT.Player("songfy-yt-video-player", {
       height: "360",
       width: "640",
@@ -55,17 +55,18 @@ export default function VideoPlayer() {
       },
     });
 
-    setControl(player);
-  };
+    setControl(player); 
+  }; 
 
-  useEffect(() => {
+  useEffect(() => { 
     getYoutubeVideoInformations();
   }, [playTrack]);
 
   useEffect(() => {
-    console.log(control);
-    if (control) {
-      control.loadVideoById(music.videoId);
+    if (typeof control === "object") {
+      try {  
+        control.loadVideoById(music.videoId);
+      } catch(err){}
     }
   }, [music]);
 
