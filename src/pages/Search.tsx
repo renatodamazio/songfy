@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { DebounceInput } from "react-debounce-input";
+import { Link } from "react-router-dom";
+import getAlbuns from "../api/getAlbuns";
 import searchArtist from "../api/searchArtist";
 import Loader from "../components/Loader";
+import { useDispatch } from "react-redux";
+import { setAlbums } from "../store/reducers/albumsReducer";
+import { useNavigate } from "react-router-dom";
 const classNames = `
 rounded-md 
 w-full h-20 
@@ -22,6 +27,8 @@ px-6`;
 export default function Home() {
   const [artists, setArtists] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getArtistsFromLastFM = async (query: string) => {
     if (query.replace(/ {1}/gi, "").length === 0) {
@@ -33,8 +40,18 @@ export default function Home() {
     setArtists(result.artist);
     setLoading(false);
   };
+
+  const redirectToResultsPage = async (query: string) => {
+    setLoading(true);
+    const albums: any = await getAlbuns(query);
+    dispatch(setAlbums(albums));
+    setLoading(false);
+    navigate(`/results/${query}`);
+    setArtists([]);
+  };
+  
   return (
-    <div className={`flex p-10 align-center justify-center h-screen flex-col`}>
+    <>
       <div className={`input-search-wrapper  ${loading ? "loading" : ""}`}>
         <DebounceInput
           type="search"
@@ -50,11 +67,14 @@ export default function Home() {
         <ul className="transition-all rounded-md shadow-inner shadow-md border-gray shadow-sm-gray p-4">
           {artists.map((artist: any, key: number) => {
             return (
-              <li
-                key={key}
-                className="p-2 font-bold rounded-md transition-colors cursor-pointer hover:text-white-egg hover:bg-orange"
-              >
-                {artist.name}
+              <li key={key} className="">
+                <Link
+                  className="flex font-bold rounded-md transition-colors cursor-pointer hover:text-white-egg hover:bg-orange p-2"
+                  to={"#"}
+                  onClick={() => redirectToResultsPage(`${artist.name}`)}
+                >
+                  {artist.name}
+                </Link>
               </li>
             );
           })}
@@ -62,6 +82,6 @@ export default function Home() {
       ) : (
         ""
       )}
-    </div>
+    </>
   );
 }
