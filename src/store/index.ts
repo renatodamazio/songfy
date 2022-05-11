@@ -3,7 +3,7 @@ import albumsReducer from "./reducers/albumsReducer";
 
 const store = configureStore({
   reducer: {
-    results: albumsReducer,
+    albums: albumsReducer,
   },
 });
 

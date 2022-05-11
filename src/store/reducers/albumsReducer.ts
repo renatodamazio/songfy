@@ -16,7 +16,7 @@ const albumSlice = createSlice({
     setAlbums: (state: any, action: any) => {
       return {
         ...state,
-        album: action.payload,
+        ...action.payload,
       };
     },
   },

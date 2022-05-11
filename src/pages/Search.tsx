@@ -44,12 +44,13 @@ export default function Home() {
   const redirectToResultsPage = async (query: string) => {
     setLoading(true);
     const albums: any = await getAlbuns(query);
+    
     dispatch(setAlbums(albums));
     setLoading(false);
     navigate(`/results/${query}`);
     setArtists([]);
   };
-  
+
   return (
     <>
       <div className={`input-search-wrapper  ${loading ? "loading" : ""}`}>
