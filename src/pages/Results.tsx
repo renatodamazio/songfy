@@ -48,7 +48,7 @@ export default function Results() {
         return setNotFound(true);
       }
 
-      // getArtistAlbums(query);
+      getArtistAlbums(query);
     }
   }, []);
 
@@ -65,9 +65,10 @@ export default function Results() {
               <>
                 <Image
                   key={key}
-                  className="w-80 rounded-lg h-80 inline-block "
+                  className="w-80 rounded-lg h-80 inline-block z-10 relative"
                   src={getAlbumImage(item.image)}
                 />{" "}
+               <div className="absolute top-0 left-0 z-0 py-2"> <Vinyl image={getAlbumImage(item.image)} /> </div>
               </>
             </Item>
           );
@@ -78,7 +79,6 @@ export default function Results() {
 
   return (
     <div>
-      <Vinyl />
       {loading && !notFound ? "loading" : <ShowVinyl />}
       {notFound ? "Não foi encontrado" : ""}
     </div>

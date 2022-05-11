@@ -5,7 +5,7 @@ export default function vinyl(props:any) {
     <div className="vinyl-disk-container">
       <div className="vinyl-disk">
         <div className="vinyl-cover">
-          <Image src={props.child} />
+          <Image src={props.image} />
         </div>
         <div className="radius">
           <div className="radius">

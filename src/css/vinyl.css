@@ -6,6 +6,11 @@
   transform: rotate(120deg);
   overflow: hidden;
   border-radius: 100%;
+  transition: all 500ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+}
+
+.open-vinyl .vinyl-disk-container{
+  transform: translateX(45%) rotate(-120deg);
 }
 
 .vinyl-disk-container:before {
@@ -36,7 +41,6 @@
     #1c1c1c 57%,
     #000000 100%
   );
-  animation: spin 4s linear infinite;
   overflow: hidden;
 }
 
