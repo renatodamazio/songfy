@@ -3,18 +3,18 @@ import React, { useEffect, useState } from "react";
 export const Item = (props: any) => {
   return (
     <li
-      onClick={() => ActiveSlider(props)}
+      onClick={() => {
+        ActiveSlider(props);
+      }}
       data-album-name={props.name}
-      className="flex flex-col justify-center content-center w-full absolute top-0 left-0 transition-all"
+      className="carousel-item"
       style={{
-        width: "400px",
         perspective: "900px",
         transformStyle: "preserve-3d",
       }}
     >
       <span className="transition-all" style={{ transform: "rotateX(35deg)" }}>
         {props.children}
-       
       </span>
     </li>
   );
@@ -46,8 +46,8 @@ const ActiveSlider = async (query: any) => {
     items[i].classList.add("remove-cover");
   }
 
-  setTimeout(() => items[indice].classList.add("destak-cover"), 300);
-  setTimeout(() => items[indice].classList.add("open-vinyl"), 600);
+  setTimeout(() => items[indice].classList.add("destak-cover"), 700);
+  setTimeout(() => items[indice].classList.add("open-vinyl"), 900);
 };
 
 export default function Carousel(props: any) {
@@ -71,7 +71,7 @@ export default function Carousel(props: any) {
   return (
     <ul
       id="parent-covers"
-      className="relative w-full justify-center content-center"
+      className={`relative w-full justify-center content-center ${props.className}`}
     >
       {props.children}
     </ul>

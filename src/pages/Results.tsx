@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import getAlbuns from "../api/getAlbuns";
-import { setAlbums } from "../store/reducers/albumsReducer";
+import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
 import Image from "../components/Image";
 import Carousel, { Item } from "../components/Carousel";
 import Vinyl from "../components/Vinyl";
@@ -58,22 +58,33 @@ export default function Results() {
 
   const ShowVinyl = () => {
     return (
-      <Carousel>
-        {vinyl.map((item: any, key: number) => {
-          return (
-            <Item key={key} name={item.name} indice={key}>
-              <>
-                <Image
-                  key={key}
-                  className="w-80 rounded-lg h-80 inline-block z-10 relative"
-                  src={getAlbumImage(item.image)}
-                />{" "}
-               <div className="absolute top-0 left-0 z-0 py-2"> <Vinyl image={getAlbumImage(item.image)} /> </div>
-              </>
-            </Item>
-          );
-        })}
-      </Carousel>
+      <div id="results-wrapper">
+        <Carousel>
+          {vinyl.map((item: any, key: number) => {
+            return (
+              <Item
+                key={key}
+                name={item.name}
+                indice={key}
+               
+              >
+                <>
+                  <Image
+                    key={key}
+                    className="rounded-lg inline-block z-10 relative"
+                    src={getAlbumImage(item.image)}
+                    onClick={() => dispatch(setOpen(true))}
+                  />{" "}
+                  <div className="absolute top-0 left-0 z-0 py-2">
+                    {" "}
+                    <Vinyl image={getAlbumImage(item.image)} />{" "}
+                  </div>
+                </>
+              </Item>
+            );
+          })}
+        </Carousel>
+      </div>
     );
   };
 

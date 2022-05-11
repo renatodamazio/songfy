@@ -6,14 +6,22 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 function App(): any {
   let location = useLocation();
-  
+
   return (
     <main className="w-screen h-screen flex flex-1 overflow-auto  p-10 align-center justify-center flex-col">
       <TransitionGroup>
-        <div className={`search-component-wrapper ${location.pathname !== "/" ? "short-search" : ""}`}>
+        <div
+          className={`search-component-wrapper ${
+            location.pathname !== "/" ? "short-search" : ""
+          }`}
+        >
           <Search />
         </div>
-        <CSSTransition key={location.pathname} classNames="fade" timeout={300}>
+        <CSSTransition
+          key={location.pathname}
+          classNames="fade h-screen"
+          timeout={300}
+        >
           <Routes>
             <Route path="/results/:id" element={<Results />} />
           </Routes>
