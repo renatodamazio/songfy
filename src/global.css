@@ -134,3 +134,19 @@ body,
 .short-search input {
   border-radius: 25px;
 }
+
+li.remove-cover span {
+  transform: rotateX(-62deg) !important;
+  margin-top: 100px;
+}
+
+li.desk-cover {
+  z-index: 9999;
+}
+
+li.destak-cover span {
+  z-index: 999;
+  position: absolute;
+
+  transform: scale(1.5) rotateX(0deg) translateY(-50%)  !important;
+}

@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import getAlbuns from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
 import Image from "../components/Image";
+import Carousel, { Item } from "../components/Carousel";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [vinil, setVinil] = useState<any>([]);
   const albums: any = useSelector<any>((state) => state.albums);
-  
+
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ export default function Results() {
   };
 
   const getAlbumImage = (data: any[]) => {
-    const largeImage = data[2];
+    const largeImage = data[3];
     return largeImage["#text"];
   };
 
@@ -56,21 +57,21 @@ export default function Results() {
 
   const ShowVinil = () => {
     return (
-      <ul>
-        <li>
-          {vinil.map((item: any, key: number) => {
-            return (
-              <li key={key} className="flex flex-col justify-center content-center w-full">
+      <Carousel>
+        {vinil.map((item: any, key: number) => {
+          return (
+            <Item key={key} name={item.name} indice={key}>
+              <>
                 <Image
+                  key={key}
                   className="w-80 rounded-lg h-80 inline-block "
                   src={getAlbumImage(item.image)}
                 />{" "}
-                {item.name}
-              </li>
-            );
-          })}
-        </li>
-      </ul>
+              </>
+            </Item>
+          );
+        })}
+      </Carousel>
     );
   };
 
