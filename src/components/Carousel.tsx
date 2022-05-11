@@ -14,12 +14,13 @@ export const Item = (props: any) => {
     >
       <span className="transition-all" style={{ transform: "rotateX(35deg)" }}>
         {props.children}
+       
       </span>
     </li>
   );
 };
 
-const ActiveSlider = async (query: any) => {
+const removeAllCoverClasses = () => {
   document
     .querySelectorAll(".destak-cover")
     .forEach((item) => item.classList.remove("destak-cover"));
@@ -27,6 +28,14 @@ const ActiveSlider = async (query: any) => {
   document
     .querySelectorAll(".remove-cover")
     .forEach((item) => item.classList.remove("remove-cover"));
+
+  document
+    .querySelectorAll(".open-vinil")
+    .forEach((item) => item.classList.remove("open-vinil"));
+};
+
+const ActiveSlider = async (query: any) => {
+  removeAllCoverClasses();
 
   const indice: number = query.indice;
   const items: any = document
@@ -37,7 +46,8 @@ const ActiveSlider = async (query: any) => {
     items[i].classList.add("remove-cover");
   }
 
-  items[indice].classList.add("destak-cover");
+  setTimeout(() => items[indice].classList.add("destak-cover"), 300);
+  setTimeout(() => items[indice].classList.add("open-vinil"), 600);
 };
 
 export default function Carousel(props: any) {

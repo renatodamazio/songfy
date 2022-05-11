@@ -5,6 +5,7 @@ import getAlbuns from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
 import Image from "../components/Image";
 import Carousel, { Item } from "../components/Carousel";
+import Vinil from "../components/Vinil";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
@@ -47,7 +48,7 @@ export default function Results() {
         return setNotFound(true);
       }
 
-      getArtistAlbums(query);
+      // getArtistAlbums(query);
     }
   }, []);
 
@@ -77,6 +78,7 @@ export default function Results() {
 
   return (
     <div>
+      <Vinil />
       {loading && !notFound ? "loading" : <ShowVinil />}
       {notFound ? "Não foi encontrado" : ""}
     </div>
