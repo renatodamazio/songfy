@@ -1,6 +1,6 @@
 .carousel-item {
   width: 328px;
-  height: 241px;
+  height: 0px;
   transition: all 500ms cubic-bezier(0.785, 0.135, 0.150, 0.860); 
   @apply flex flex-col justify-center content-center absolute   outline-2 outline-brown cursor-pointer;
 }
@@ -13,5 +13,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
 }

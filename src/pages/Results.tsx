@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import getAlbuns from "../api/getAlbuns";
-import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
+import { setAlbums } from "../store/reducers/albumsReducer";
 import Image from "../components/Image";
 import Carousel, { Item } from "../components/Carousel";
+import Tracks from "../components/Tracks";
 import Vinyl from "../components/Vinyl";
 
 export default function Results() {
@@ -12,6 +13,7 @@ export default function Results() {
   const [loading, setLoading] = useState<boolean>(false);
   const [vinyl, setVinyl] = useState<any>([]);
   const albums: any = useSelector<any>((state) => state.albums);
+  const [albumSelected, setAlbumSelected] = useState<object>({});
 
   const location = useLocation();
   const dispatch = useDispatch();
@@ -39,6 +41,14 @@ export default function Results() {
     return largeImage["#text"];
   };
 
+  const setAlbumInfo = (props: any) => {
+    props.env.preventDefault();
+    setAlbumSelected({
+      name: props.name,
+      artist: props.artist,
+    });
+  };
+
   useEffect(() => {
     if (albums.album === "") {
       const pathname = location.pathname;
@@ -59,22 +69,21 @@ export default function Results() {
   const ShowVinyl = () => {
     return (
       <div id="results-wrapper">
+        <Tracks album={albumSelected} />
         <Carousel>
           {vinyl.map((item: any, key: number) => {
             return (
-              <Item
-                key={key}
-                name={item.name}
-                indice={key}
-               
-              >
+              <Item key={key} name={item.name} indice={key}>
                 <>
                   <Image
                     key={key}
+                    role="button"
                     className="rounded-lg inline-block z-10 relative"
                     src={getAlbumImage(item.image)}
-                    onClick={() => dispatch(setOpen(true))}
-                  />{" "}
+                    onClick={(env: any) => {
+                      setAlbumInfo({ env: env, name: item.name, artist: item.artist.name });
+                    }}
+                  />
                   <div className="absolute top-0 left-0 z-0 py-2">
                     {" "}
                     <Vinyl image={getAlbumImage(item.image)} />{" "}

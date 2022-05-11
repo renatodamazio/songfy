@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setOpen } from "../store/reducers/albumsReducer";
 export const Item = (props: any) => {
   return (
     <li
       onClick={() => {
-        ActiveSlider(props);
       }}
       data-album-name={props.name}
       className="carousel-item"
@@ -18,36 +18,6 @@ export const Item = (props: any) => {
       </span>
     </li>
   );
-};
-
-const removeAllCoverClasses = () => {
-  document
-    .querySelectorAll(".destak-cover")
-    .forEach((item) => item.classList.remove("destak-cover"));
-
-  document
-    .querySelectorAll(".remove-cover")
-    .forEach((item) => item.classList.remove("remove-cover"));
-
-  document
-    .querySelectorAll(".open-vinyl")
-    .forEach((item) => item.classList.remove("open-vinyl"));
-};
-
-const ActiveSlider = async (query: any) => {
-  removeAllCoverClasses();
-
-  const indice: number = query.indice;
-  const items: any = document
-    .querySelector("#parent-covers")
-    ?.querySelectorAll("li");
-
-  for (let i: any = items?.length - 1; i >= indice; i--) {
-    items[i].classList.add("remove-cover");
-  }
-
-  setTimeout(() => items[indice].classList.add("destak-cover"), 700);
-  setTimeout(() => items[indice].classList.add("open-vinyl"), 900);
 };
 
 export default function Carousel(props: any) {
@@ -69,11 +39,14 @@ export default function Carousel(props: any) {
   }, []);
 
   return (
-    <ul
-      id="parent-covers"
-      className={`relative w-full justify-center content-center ${props.className}`}
-    >
-      {props.children}
-    </ul>
+    <>
+    <div></div>
+      <ul
+        id="parent-covers"
+        className={`relative w-full justify-center content-center ${props.className}`}
+      >
+        {props.children}
+      </ul>
+    </>
   );
 }
