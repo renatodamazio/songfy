@@ -30,8 +30,8 @@ const removeAllCoverClasses = () => {
     .forEach((item) => item.classList.remove("remove-cover"));
 
   document
-    .querySelectorAll(".open-vinil")
-    .forEach((item) => item.classList.remove("open-vinil"));
+    .querySelectorAll(".open-vinyl")
+    .forEach((item) => item.classList.remove("open-vinyl"));
 };
 
 const ActiveSlider = async (query: any) => {
@@ -47,7 +47,7 @@ const ActiveSlider = async (query: any) => {
   }
 
   setTimeout(() => items[indice].classList.add("destak-cover"), 300);
-  setTimeout(() => items[indice].classList.add("open-vinil"), 600);
+  setTimeout(() => items[indice].classList.add("open-vinyl"), 600);
 };
 
 export default function Carousel(props: any) {

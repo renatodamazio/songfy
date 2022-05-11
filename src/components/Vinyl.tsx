@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "./Image";
-export default function Vinil(props:any) {
+export default function vinyl(props:any) {
   return (
-    <div className="vinil-disk-container">
-      <div className="vinil-disk">
-        <div className="vinil-cover">
+    <div className="vinyl-disk-container">
+      <div className="vinyl-disk">
+        <div className="vinyl-cover">
           <Image src={props.child} />
         </div>
         <div className="radius">

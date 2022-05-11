@@ -5,12 +5,12 @@ import getAlbuns from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
 import Image from "../components/Image";
 import Carousel, { Item } from "../components/Carousel";
-import Vinil from "../components/Vinil";
+import Vinyl from "../components/Vinyl";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [vinil, setVinil] = useState<any>([]);
+  const [vinyl, setVinyl] = useState<any>([]);
   const albums: any = useSelector<any>((state) => state.albums);
 
   const location = useLocation();
@@ -27,7 +27,7 @@ export default function Results() {
     const getAlbumData = albums?.album;
 
     if (getAlbumData && getAlbumData.length) {
-      setVinil(getAlbumData);
+      setVinyl(getAlbumData);
       setNotFound(false);
     }
 
@@ -56,10 +56,10 @@ export default function Results() {
     mountAlbumProperties();
   }, [albums]);
 
-  const ShowVinil = () => {
+  const ShowVinyl = () => {
     return (
       <Carousel>
-        {vinil.map((item: any, key: number) => {
+        {vinyl.map((item: any, key: number) => {
           return (
             <Item key={key} name={item.name} indice={key}>
               <>
@@ -78,8 +78,8 @@ export default function Results() {
 
   return (
     <div>
-      <Vinil />
-      {loading && !notFound ? "loading" : <ShowVinil />}
+      <Vinyl />
+      {loading && !notFound ? "loading" : <ShowVinyl />}
       {notFound ? "Não foi encontrado" : ""}
     </div>
   );
