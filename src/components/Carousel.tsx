@@ -6,12 +6,13 @@ export default function Carousel(props: any) {
   const [items, setItems] = useState<any>([...props.items]);
   const [start, _setStart] = useState<number>(0);
   const [pressed, _setPressed] = useState<boolean>(false);
-
+  const [centerItem, _setCenterItem] = useState<any>();
   const carousel: any = useRef(null);
   const carouselInner: any = useRef(null);
 
   const pressedRef: any = useRef(pressed);
   const startRef: any = useRef(start);
+  const centerItemRef: any = useRef(centerItem);
 
   const setPressed = (state: boolean) => {
     pressedRef.current = state;
@@ -23,9 +24,19 @@ export default function Carousel(props: any) {
     _setStart(state);
   };
 
+  const setCenterItem = (state: any) => {
+    centerItemRef.current = state;
+    _setCenterItem(state);
+  };
+
   const getAlbumImage = (data: any[]) => {
     const largeImage = data[3];
     return largeImage["#text"];
+  };
+
+  const middleItem = (): any => {
+    const total: number = items.length / 2;
+    return Math.floor(total);
   };
 
   const Item = (data: any) => {
@@ -77,6 +88,10 @@ export default function Carousel(props: any) {
 
       carouselInner.current.style.top = `${y - startY}px`;
 
+      for (let i = items.length; i--; ) {
+        centerSliderItem(i);
+      }
+
       checkBounderies();
     });
   };
@@ -102,13 +117,35 @@ export default function Carousel(props: any) {
     }
   };
 
+  const centerSliderItem = (index: number) => {
+    try {
+      const percZone = 10;
+      const element =
+        carousel.current.querySelectorAll(".carousel-inner li")[index];
+      const pos = element.getBoundingClientRect();
+      const topPerc = (pos.top / carouselInner.current.offsetHeight) * 100;
+      const bottomPerc =
+        (pos.bottom / carouselInner.current.offsetHeight) * 100;
+      
+        const middle = Math.floor(topPerc + bottomPerc) / 2;
+      const inViewPort = middle > percZone && middle < 27 - percZone;
+
+    
+      element.classList.toggle("carousel-center-item", inViewPort);
+    } catch (err) {}
+  };
+
   useEffect(() => {
+    const mid = middleItem();
+
     carouselMouseDown();
     carouselMouseEnter();
     carouselMouseUp();
     carouselMove();
 
     checkBounderies();
+
+    centerSliderItem(mid);
   }, []);
 
   return (

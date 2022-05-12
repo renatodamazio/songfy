@@ -9,3 +9,7 @@
 .carousel-inner {
   @apply  absolute pointer-events-none w-full;
 }
+
+.carousel-center-item {
+  @apply bg-orange-dark text-white;
+}
