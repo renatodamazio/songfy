@@ -1,15 +1,70 @@
 .carousel {
   width: 700px;
+  height: 400px;
+  transform: translateY(50%);
   border: 1px solid black;
   margin: 0 auto;
 
   @apply h-full top-0 overflow-hidden absolute;
 }
 
-.carousel-inner {
-  @apply  absolute pointer-events-none w-full;
+.carousel-item-wrapper {
+  height: 100%;
+  perspective: 100px;
 }
 
-.carousel-center-item {
-  @apply bg-orange-dark text-white;
+.carousel-item {
+  height: 200px;
+  background: #000;
+  transform-style: preserve-3d;
+  perspective: 100px;
+  transition: linear .5s;
+}
+
+.carousel-item.on-top {
+  background: blue;
+  transform: rotateX(-5deg);
+}
+
+.carousel-item.on-bottom{
+  background: red;
+  transform: rotateX(5deg);
+}
+
+.swiper-slide-active {
+  @apply z-20;
+}
+
+.swiper-slide-active .carousel-item{
+  @apply bg-white text-orange z-20;
+}
+
+.swiper-slide-active .carousel-item {
+  transform: rotate(0deg);
+}
+
+.swiper-slide {
+  border: 1px solid #000;
+}
+
+.swiper-container {
+  height: 100vh;
+}
+
+.swiper-slide {
+  background-color: transparent;
+  background-image: none;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  width: 300px;
+  max-height: 181px;
+  opacity: 1;
+  /*transition: 1s opacity;*/
+}
+.swiper-slide-prev {
+  opacity: 1;
+}
+.swiper-slide-active, .swiper-slide-next {
+  opacity: 1;
 }
