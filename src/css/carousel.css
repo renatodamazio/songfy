@@ -7,5 +7,5 @@
 }
 
 .carousel-inner {
-  @apply h-full overflow-auto absolute pointer-events-none w-full;
+  @apply h-full  absolute pointer-events-none w-full;
 }
