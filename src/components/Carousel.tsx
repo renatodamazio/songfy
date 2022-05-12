@@ -75,18 +75,40 @@ export default function Carousel(props: any) {
       let y = e.offsetY;
       let startY = startRef.current;
 
-      console.log(startY);
-
       carouselInner.current.style.top = `${y - startY}px`;
+
+      checkBounderies();
     });
+  };
+
+  const checkBounderies = () => {
+    let outer = carousel.current.getBoundingClientRect();
+    let inner = carouselInner.current.getBoundingClientRect();
+
+    let total = inner.top - outer.height;
+
+    if (parseInt(carouselInner.current.style.top) > 0) {
+      try {
+        carouselInner.current.style.top = "0px";
+      } catch (err) {
+        console.log("error...");
+      }
+    } else if (Math.abs(total) > inner.height) {
+      try {
+        carouselInner.current.style.top = `-${inner.height - outer.height}px`;
+      } catch (err) {
+        console.log("error...");
+      }
+    }
   };
 
   useEffect(() => {
     carouselMouseDown();
     carouselMouseEnter();
     carouselMouseUp();
-
     carouselMove();
+
+    checkBounderies();
   }, []);
 
   return (
