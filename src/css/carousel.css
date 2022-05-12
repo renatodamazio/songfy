@@ -1,11 +1,10 @@
 .carousel {
   width: 700px;
   height: 400px;
-  transform: translateY(50%);
   border: 1px solid black;
   margin: 0 auto;
 
-  @apply h-full top-0 overflow-hidden absolute;
+  @apply h-full top-0 overflow-hidden absolute flex justify-center content-center align-middle;
 }
 
 .carousel-item-wrapper {
@@ -18,24 +17,25 @@
   background: #000;
   transform-style: preserve-3d;
   perspective: 100px;
-  transition: linear .5s;
+  transition: linear 0.5s;
+  border: 1px solid black;
 }
 
 .carousel-item.on-top {
   background: blue;
-  transform: rotateX(-5deg);
+  transform: rotateX(-16deg);
 }
 
-.carousel-item.on-bottom{
+.carousel-item.on-bottom {
   background: red;
-  transform: rotateX(5deg);
+  transform: rotateX(16deg);
 }
 
 .swiper-slide-active {
   @apply z-20;
 }
 
-.swiper-slide-active .carousel-item{
+.swiper-slide-active .carousel-item {
   @apply bg-white text-orange z-20;
 }
 
@@ -56,7 +56,7 @@
   background-image: none;
   background-position: center;
   background-size: cover;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
   width: 300px;
   max-height: 181px;
   opacity: 1;
@@ -65,6 +65,7 @@
 .swiper-slide-prev {
   opacity: 1;
 }
-.swiper-slide-active, .swiper-slide-next {
+.swiper-slide-active,
+.swiper-slide-next {
   opacity: 1;
 }

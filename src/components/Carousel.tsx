@@ -16,9 +16,13 @@ export default function Carousel(props: any) {
 
   const Item = (props: any) => {
     const { name, image } = props;
+    console.log(image);
     return (
       <div className="carousel-item-wrapper">
-        <div className="carousel-item">{name}</div>
+        <div className="carousel-item">
+          {/* <Image src={getAlbumImage(image)} alt={name} /> */}
+          {name}
+        </div>
       </div>
     );
   };
@@ -38,24 +42,27 @@ export default function Carousel(props: any) {
       onBottom.push(slides[y]);
     }
 
-    for (let x = index ; x >= 0; x--) {
+    for (let x = index; x >= 0; x--) {
       if (!slides[x].classList.contains("swiper-slide-next")) {
-         onTop.push(slides[x]);
+        onTop.push(slides[x]);
       }
     }
 
-    onTop.forEach((item: any) => {
+    let onTopTotal = onTop.length;
+
+    onTop.forEach((item: any, key: number) => {
       const element = item.querySelectorAll(".carousel-item")[0];
       element.classList.add("on-top");
       element.classList.remove("on-bottom");
+      item.style.zIndex = (onTopTotal--)
     });
 
-    onBottom.forEach((item: any) => {
+    onBottom.forEach((item: any, key:number) => {
       const element = item.querySelectorAll(".carousel-item")[0];
       element.classList.add("on-bottom");
       element.classList.remove("on-top");
+      item.style.zIndex = key;
     });
-
   };
 
   return (
@@ -83,7 +90,7 @@ export default function Carousel(props: any) {
         {items.map((item: any, key: number) => {
           return (
             <SwiperSlide key={key}>
-              <Item name={item.name} />
+              <Item name={item.name} image={item.image} />
             </SwiperSlide>
           );
         })}
