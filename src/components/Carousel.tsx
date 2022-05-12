@@ -1,52 +1,66 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setOpen } from "../store/reducers/albumsReducer";
-export const Item = (props: any) => {
-  return (
-    <li
-      onClick={() => {
-      }}
-      data-album-name={props.name}
-      className="carousel-item"
-      style={{
-        perspective: "900px",
-        transformStyle: "preserve-3d",
-      }}
-    >
-      <span className="transition-all" style={{ transform: "rotateX(35deg)" }}>
-        {props.children}
-      </span>
-    </li>
-  );
-};
+import React, { useEffect, useState, useRef } from "react";
+import Vinyl from "../components/Vinyl";
+import Image from "../components/Image";
 
 export default function Carousel(props: any) {
-  const configureImageLayout = () => {
-    const totalImages = props.children.length;
-    const parentCover: any = document.querySelector("#parent-covers");
+  const [items, setItems] = useState<any>([...props.items]);
+  const [start, setStart] = useState<number>(0);
+  const [pressed, setPressed] = useState<boolean>(false);
 
-    if (typeof parentCover !== "object") return false;
+  const carousel: any = useRef(null);
+  const carouselInner: any = useRef(null);
 
-    for (let i = 0; i < totalImages; i++) {
-      let cover: any = parentCover?.querySelectorAll(`li`)[i];
-      let top: number = (i * 30) / 0.5;
-      cover.style.transform = `translateY(${top}px)`;
-    }
+  const getAlbumImage = (data: any[]) => {
+    const largeImage = data[3];
+    return largeImage["#text"];
+  };
+
+  const Item = (data: any) => {
+    const { name, indice } = data.item;
+    return (
+      <li className="h-60 flex justify-center align-middle content-center border-2">
+        {name}
+      </li>
+    );
+  };
+
+  const carouselMouseDown = () => {
+    carousel.current.addEventListener("mousedown", (e: any) => {
+      e.preventDefault();
+      setPressed(true);
+
+      const startMouseMove = e.offsetX - carouselInner.current.offsetTop;
+      setStart(startMouseMove);
+
+      carousel.current.style.cursor = "grabbing";
+    });
+  };
+
+  const carouselMouseEnter = () => {
+    carousel.current.addEventListener("mouseenter", (e: any) => {
+      carousel.current.style.cursor = "grab";
+    });
+  };
+
+  const carouselMouseUp = () => {
+    carousel.current.addEventListener("mouseup", (e: any) => {
+      carousel.current.style.cursor = "grab";
+    });
   };
 
   useEffect(() => {
-    configureImageLayout();
+    carouselMouseDown();
+    carouselMouseEnter();
+    carouselMouseUp();
   }, []);
 
   return (
-    <>
-    <div></div>
-      <ul
-        id="parent-covers"
-        className={`relative w-full justify-center content-center ${props.className}`}
-      >
-        {props.children}
+    <div className="carousel" ref={carousel}>
+      <ul className="carousel-inner" ref={carouselInner}>
+        {items.map((item: any, key: number) => {
+          return <Item key={key} indice={key} item={item} />;
+        })}
       </ul>
-    </>
+    </div>
   );
 }

@@ -3,10 +3,8 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import getAlbuns from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
-import Image from "../components/Image";
-import Carousel, { Item } from "../components/Carousel";
+import Carousel from "../components/Carousel";
 import Tracks from "../components/Tracks";
-import Vinyl from "../components/Vinyl";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
@@ -34,11 +32,6 @@ export default function Results() {
     }
 
     setLoading(false);
-  };
-
-  const getAlbumImage = (data: any[]) => {
-    const largeImage = data[3];
-    return largeImage["#text"];
   };
 
   const setAlbumInfo = (props: any) => {
@@ -70,29 +63,7 @@ export default function Results() {
     return (
       <div id="results-wrapper">
         <Tracks album={albumSelected} />
-        <Carousel>
-          {vinyl.map((item: any, key: number) => {
-            return (
-              <Item key={key} name={item.name} indice={key}>
-                <>
-                  <Image
-                    key={key}
-                    role="button"
-                    className="rounded-lg inline-block z-10 relative"
-                    src={getAlbumImage(item.image)}
-                    onClick={(env: any) => {
-                      setAlbumInfo({ env: env, name: item.name, artist: item.artist.name });
-                    }}
-                  />
-                  <div className="absolute top-0 left-0 z-0 py-2">
-                    {" "}
-                    <Vinyl image={getAlbumImage(item.image)} />{" "}
-                  </div>
-                </>
-              </Item>
-            );
-          })}
-        </Carousel>
+        <Carousel items={vinyl} />
       </div>
     );
   };

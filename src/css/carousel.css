@@ -1,16 +1,11 @@
-.carousel-item {
-  width: 328px;
-  height: 0px;
-  transition: all 500ms cubic-bezier(0.785, 0.135, 0.150, 0.860); 
-  @apply flex flex-col justify-center content-center absolute   outline-2 outline-brown cursor-pointer;
+.carousel {
+  width: 700px;
+  border: 1px solid black;
+  margin: 0 auto;
+
+  @apply h-full top-0 overflow-hidden absolute;
 }
 
-#parent-covers {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  height: calc(100vh);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.carousel-inner {
+  @apply h-full overflow-auto absolute pointer-events-none w-full;
 }
