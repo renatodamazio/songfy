@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from "react";
+import Image from "../components/Image";
+import { useSelector, useDispatch } from "react-redux";
+import Vinyl from "../components/Vinyl";
+import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow } from "swiper";
 
+import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
   return (
-    <li
+    <div
       onClick={() => {
         ActiveSlider(props);
       }}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
       data-album-name={props.name}
       className="carousel-item"
-      style={{
-        perspective: "900px",
-        transformStyle: "preserve-3d",
-      }}
     >
-      <span className="transition-all" style={{ transform: "rotateX(35deg)" }}>
-        {props.children}
-      </span>
-    </li>
+      <span className="transition-all">{props.children}</span>
+    </div>
   );
+};
+
+const getAlbumImage = (data: any[]) => {
+  const largeImage = data[3];
+  return largeImage["#text"];
 };
 
 const removeAllCoverClasses = () => {
@@ -51,29 +59,40 @@ const ActiveSlider = async (query: any) => {
 };
 
 export default function Carousel(props: any) {
-  const configureImageLayout = () => {
-    const totalImages = props.children.length;
-    const parentCover: any = document.querySelector("#parent-covers");
-
-    if (typeof parentCover !== "object") return false;
-
-    for (let i = 0; i < totalImages; i++) {
-      let cover: any = parentCover?.querySelectorAll(`li`)[i];
-      let top: number = (i * 30) / 0.5;
-      cover.style.transform = `translateY(${top}px)`;
-    }
-  };
-
-  useEffect(() => {
-    configureImageLayout();
-  }, []);
-
   return (
-    <ul
-      id="parent-covers"
-      className={`relative w-full justify-center content-center ${props.className}`}
+    <Swiper
+      direction="vertical"
+      modules={[EffectCoverflow]}
+      effect="coverflow"
+      spaceBetween={0}
+      centeredSlides={true}
+      loop={false}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false,
+      }}
+      slidesPerView={5}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
     >
-      {props.children}
-    </ul>
+      {props.items.map((item: any, key: number) => {
+        return (
+          <SwiperSlide key={key}>
+            <Item name={item.name} indice={key}>
+              <>
+                <Image
+                  key={key}
+                  className="rounded-lg inline-block z-10 relative h-full"
+                  src={getAlbumImage(item.image)}
+                />{" "}
+              </>
+            </Item>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
   );
 }

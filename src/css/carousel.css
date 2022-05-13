@@ -1,9 +1,4 @@
-.carousel-item {
-  width: 328px;
-  height: 241px;
-  transition: all 500ms cubic-bezier(0.785, 0.135, 0.150, 0.860); 
-  @apply flex flex-col justify-center content-center absolute   outline-2 outline-brown cursor-pointer;
-}
+
 
 #parent-covers {
   width: 100%;
@@ -14,4 +9,40 @@
   align-items: center;
   justify-content: center;
   overflow: auto;
+}
+
+
+.swiper {
+  @apply h-screen;
+}
+
+.swiper-slide:not(.slide-active) {
+  max-height: 130px
+}
+
+.carousel-item {
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  perspective: 100px;
+}
+
+.carousel-item span {
+  transform: translate3d(10px, -107px, -26px) rotateX(15deg);
+}
+
+.swiper-slide-active {
+  z-index: 9999 !important;
+  position: relative;
+}
+.swiper-slide-active .carousel-item{
+  transform: scale(1.1);
+  z-index: 999;
+}
+.swiper-slide-active .carousel-item span {
+  transform: translate3d(0px, 0px, 1px) rotateX(0deg);
+
 }

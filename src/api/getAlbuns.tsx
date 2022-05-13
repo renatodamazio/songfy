@@ -3,9 +3,14 @@ export default function getAlbuns(query:string):object {
     const getAlbum = async () => {
         return await fetch(url)
           .then((json) => json.json())
-          .then(({ topalbums }) => topalbums)
+          .then(({ topalbums }) => console.log(JSON.stringify(topalbums)))
           .catch((err) => new Error(err));
       };
     
       return getAlbum();
+}
+
+export const getMockAlbuns = () => {
+    const json = require("./mockAlbum.json");
+    return json;
 }
