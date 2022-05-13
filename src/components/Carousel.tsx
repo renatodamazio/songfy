@@ -18,7 +18,7 @@ export const Item = (props: any) => {
       data-album-name={props.name}
       className="carousel-item"
     >
-      <span className="transition-all">{props.children}</span>
+      <span className="ease-out-cubic rounded-lg  relative">{props.children}</span>
     </div>
   );
 };
@@ -66,6 +66,7 @@ export default function Carousel(props: any) {
       effect="coverflow"
       spaceBetween={0}
       centeredSlides={true}
+      speed={900}
       loop={false}
       coverflowEffect={{
         rotate: 0,
@@ -85,9 +86,13 @@ export default function Carousel(props: any) {
               <>
                 <Image
                   key={key}
-                  className="rounded-lg inline-block z-10 relative h-full"
+                  className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
                   src={getAlbumImage(item.image)}
-                />{" "}
+                />
+                <div className="vinyl-cover ease-out-cubic-back">
+                    <button className="open-album">View Album</button>
+                    <Vinyl image={getAlbumImage(item.image)}/>
+                </div>
               </>
             </Item>
           </SwiperSlide>

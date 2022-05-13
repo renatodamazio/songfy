@@ -10,7 +10,7 @@
 }
 
 .swiper {
-  max-height: 700px;
+  max-height: calc(100vh - 150px);
   overflow: hidden;
 }
 
@@ -25,15 +25,19 @@
   align-items: center;
   justify-content: center;
   perspective: 100px;
+  position: relative;
 }
 
 .swiper-slide-active {
   z-index: 9999 !important;
+  max-height: 333px !important;
+  height: 280px !important;
   position: relative;
 }
 .swiper-slide-active .carousel-item {
   transform: scale(1.1);
   z-index: 999;
+  height: 307px !important;
 }
 .swiper-slide-active .carousel-item span {
   transform: translate3d(0px, 0px, 1px) rotateX(0deg);
@@ -43,10 +47,7 @@
   transform: translate3d(10px, 93px, -24px) rotateX(-9deg) translateY(14px);
 }
 
-.swiper-slide-next .carousel-item span {
-  transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-14px) !important;
-}
+.swiper-slide-next .carousel-item span,
 .swiper-slide-next ~ .swiper-slide .carousel-item span {
-  /* transform: translate3d(10px, -107px, -26px) rotateX(15deg); */
-  transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-14px);
+  transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-24px);
 }

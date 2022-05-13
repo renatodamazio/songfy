@@ -10,7 +10,7 @@
 @import "./css/search.css";
 @import "./css/carousel.css";
 @import "./css/results.css";
-
+@import "./css/transition.css";
 html,
 body,
 #root {
