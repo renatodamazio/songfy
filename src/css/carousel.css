@@ -1,5 +1,3 @@
-
-
 #parent-covers {
   width: 100%;
   margin: 0 auto;
@@ -11,13 +9,13 @@
   overflow: auto;
 }
 
-
 .swiper {
-  @apply h-screen;
+  max-height: 700px;
+  overflow: hidden;
 }
 
 .swiper-slide:not(.slide-active) {
-  max-height: 130px
+  max-height: 130px;
 }
 
 .carousel-item {
@@ -26,23 +24,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #000;
   perspective: 100px;
-}
-
-.carousel-item span {
-  transform: translate3d(10px, -107px, -26px) rotateX(15deg);
 }
 
 .swiper-slide-active {
   z-index: 9999 !important;
   position: relative;
 }
-.swiper-slide-active .carousel-item{
+.swiper-slide-active .carousel-item {
   transform: scale(1.1);
   z-index: 999;
 }
 .swiper-slide-active .carousel-item span {
   transform: translate3d(0px, 0px, 1px) rotateX(0deg);
+}
 
+.carousel-item span {
+  transform: translate3d(10px, 93px, -24px) rotateX(-9deg) translateY(14px);
+}
+
+.swiper-slide-next .carousel-item span {
+  transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-14px) !important;
+}
+.swiper-slide-next ~ .swiper-slide .carousel-item span {
+  /* transform: translate3d(10px, -107px, -26px) rotateX(15deg); */
+  transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-14px);
 }
