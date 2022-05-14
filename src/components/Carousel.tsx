@@ -8,13 +8,7 @@ import ButtonLoading from "./ButtonLoading";
 import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
   return (
-    <div
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      data-album-name={props.name}
-      style={{ ...props.style }}
-      className={`carousel-item ${props.className}`}
-    >
+    <div className={`carousel-item ${props.className}`}>
       <span className="ease-out-cubic rounded-lg  relative">
         {props.children}
       </span>
@@ -52,36 +46,7 @@ function Carousel(props: any) {
             <SwiperSlide key={key}>
               <Item name={item.name} indice={key}>
                 <>
-                <ButtonLoading album={item}/>
-                  {/* <button
-                    className={`load-album ease-in-out-cubic ${
-                      item.name === pickUpAlbum.name
-                        ? "rounded-[50%] bg-white hover:bg-gray-light"
-                        : ""
-                    }`}
-                    onClick={(ev) => {
-                      ev.preventDefault();
-                      if (item.name !== pickUpAlbum.name) {
-                        // setPickUpAlbum(item);
-                      }
-                    }}
-                  >
-                    <MdPlayArrow
-                      fontSize={50}
-                      className={
-                        item.name === pickUpAlbum.name
-                          ? "opacity-0"
-                          : "opacity-1"
-                      }
-                    />
-                    <Loader
-                      className={`${
-                        item.name === pickUpAlbum.name
-                          ? "opacity-1"
-                          : "opacity-0"
-                      } absolute top-0 left-0 -my-1 -mx-1`}
-                    />
-                  </button> */}
+                  <ButtonLoading album={item} />
                   <Image
                     key={key}
                     className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"

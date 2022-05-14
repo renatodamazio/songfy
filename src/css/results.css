@@ -59,8 +59,8 @@
   hover:scale-105
   hover:text-white
   hover:shadow-sm
-  active:scale-100
   active:opacity-90
+  transition-ease-in-renato
   p-3 
    top-1/2 
    left-1/2 
