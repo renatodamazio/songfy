@@ -36,6 +36,7 @@
   height: 280px !important;
   position: relative;
 }
+
 .swiper-slide-active .carousel-item {
   transform: scale(1.1);
   z-index: 999;

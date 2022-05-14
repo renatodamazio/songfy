@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "../components/Image";
 import Vinyl from "../components/Vinyl";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,6 +18,7 @@ export const Item = (props: any) => {
 };
 
 function Carousel(props: any) {
+
   return (
     <>
       <Swiper
@@ -42,7 +43,7 @@ function Carousel(props: any) {
             <SwiperSlide key={key}>
               <Item name={item.name} indice={key}>
                 <>
-                  <ButtonLoading album={item} />
+                  <ButtonLoading loading={props.loading} album={item} />
                   <Image
                     key={key}
                     className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"

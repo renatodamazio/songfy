@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  albumOpen: [],
+  albumOpen:false,
 };
 
 const albumOpen = createSlice({

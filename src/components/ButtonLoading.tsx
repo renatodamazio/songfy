@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 export default function ButtonLoading(props: any) {
   const { album } = props;
   const [pickUpAlbum, setPickUpAlbum] = useState<any>("");
-  const albumInfo: any = useSelector<any>((state) => state.albumOpen);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,12 +18,12 @@ export default function ButtonLoading(props: any) {
   return (
     <div
       className={`load-album cursor-pointer ${
-        albumInfo.albumOpen.name == album.name &&
+        props.loading &&
         "rounded-[50%] bg-white hover:bg-gray "
       }`}
       onClick={() => setPickUpAlbum(album)}
     >
-      {albumInfo.albumOpen.name == album.name ? <Loader /> : <MdPlayArrow />}
+      {props.loading ? <Loader /> : <MdPlayArrow />}
     </div>
   );
 }
