@@ -29,7 +29,7 @@
 
 .swiper-slide-active .load-album {
   @apply opacity-100 visible;
-} 
+}
 
 .swiper-slide-active .vinyl-wrapper {
   animation: showVinyl 0.4s ease-in-out forwards;
@@ -66,6 +66,14 @@
    left-1/2 
    -translate-x-1/2 
    -translate-y-1/2;
+}
+
+.carousel-item.album-choosed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.4);
+  width: 100%;
 }
 
 @keyframes backForwardVinylCover {

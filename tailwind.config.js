@@ -19,7 +19,10 @@ module.exports = {
       "green-dark": "#283618",
       "green-light": "#606c38",
     },
-    extend: {},
+
+    transitionProperty: {
+      "ease-in-renato": "cubic-bezier(0.895, 0.030, 0.685, 0.220);",
+    },
   },
   plugins: [],
 };

@@ -6,19 +6,16 @@ import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
 import { MdPlayArrow } from "react-icons/md";
-import { IconContext } from "react-icons";
 
 import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
   return (
     <div
-      onClick={() => {
-        ActiveSlider(props);
-      }}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       data-album-name={props.name}
-      className="carousel-item"
+      style={{ ...props.style }}
+      className={`carousel-item ${props.className}`}
     >
       <span className="ease-out-cubic rounded-lg  relative">
         {props.children}
@@ -32,37 +29,14 @@ const getAlbumImage = (data: any[]) => {
   return largeImage["#text"];
 };
 
-const removeAllCoverClasses = () => {
-  document
-    .querySelectorAll(".destak-cover")
-    .forEach((item) => item.classList.remove("destak-cover"));
-
-  document
-    .querySelectorAll(".remove-cover")
-    .forEach((item) => item.classList.remove("remove-cover"));
-
-  document
-    .querySelectorAll(".open-vinyl")
-    .forEach((item) => item.classList.remove("open-vinyl"));
-};
-
-const ActiveSlider = async (query: any) => {
-  removeAllCoverClasses();
-
-  const indice: number = query.indice;
-  const items: any = document
-    .querySelector("#parent-covers")
-    ?.querySelectorAll("li");
-
-  for (let i: any = items?.length - 1; i >= indice; i--) {
-    items[i].classList.add("remove-cover");
-  }
-
-  setTimeout(() => items[indice].classList.add("destak-cover"), 700);
-  setTimeout(() => items[indice].classList.add("open-vinyl"), 900);
-};
 
 export default function Carousel(props: any) {
+  const [pickUpAlbum, setPickUpAlbum] = useState<any>("");
+  const { setOpenAlbum } = props;
+
+  useEffect(() => {
+    setOpenAlbum(pickUpAlbum);
+  }, []);
   return (
     <>
       <Swiper
@@ -81,18 +55,21 @@ export default function Carousel(props: any) {
           slideShadows: false,
         }}
         slidesPerView={5}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {props.items.map((item: any, key: number) => {
           return (
             <SwiperSlide key={key}>
-              <Item name={item.name} indice={key}>
+              <Item
+                name={item.name}
+                indice={key}
+              >
                 <>
-                  <button className="load-album ease-in-out-cubic">
-                   <MdPlayArrow fontSize={50}/>
+                  <button
+                    className={`load-album ease-in-out-cubic ${item.name === pickUpAlbum.name ? "rounded-[50%]" : ""}`}
+                    onClick={() => setPickUpAlbum(item)}
+                  >
+                    <MdPlayArrow fontSize={50} />
                   </button>
-
                   <Image
                     key={key}
                     className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"

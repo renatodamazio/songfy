@@ -9,3 +9,7 @@
 .ease-in-out-cubic {
     transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
+
+.ease-in-quart {
+    transition: all 500ms cubic-bezier(0.895, 0.030, 0.685, 0.220);
+}

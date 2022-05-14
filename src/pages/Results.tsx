@@ -9,6 +9,7 @@ export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [vinyl, setVinyl] = useState<any>([]);
+  const [openAlbum, setOpenAlbum] = useState<any>([]);
   const albums: any = useSelector<any>((state) => state.albums);
 
   const location = useLocation();
@@ -33,7 +34,6 @@ export default function Results() {
   };
 
 
-
   useEffect(() => {
     if (albums.album === "") {
       const pathname = location.pathname;
@@ -54,7 +54,7 @@ export default function Results() {
   const ShowVinyl = () => {
     return (
       <div id="results-wrapper">
-        <Carousel items={vinyl} />
+        <Carousel items={vinyl} setOpenAlbum={setOpenAlbum} openAlbum={openAlbum}/>
       </div>
     );
   };

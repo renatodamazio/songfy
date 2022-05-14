@@ -26,6 +26,8 @@
   justify-content: center;
   perspective: 100px;
   position: relative;
+
+  @apply transition-ease-in-renato duration-700;
 }
 
 .swiper-slide-active {
@@ -50,5 +52,14 @@
 .swiper-slide-next .carousel-item span,
 .swiper-slide-next ~ .swiper-slide .carousel-item span {
   transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-24px);
+}
+
+html body .swiper .swiper-slide-active.swiper-slider-fixed {
+  position: fixed;
+  transform: none !important;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+  width: 100%;
 }
 
