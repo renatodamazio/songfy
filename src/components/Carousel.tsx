@@ -4,6 +4,7 @@ import Vinyl from "../components/Vinyl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
 import ButtonLoading from "./ButtonLoading";
+import getImageFromAPi from "../utils/getImageFromApi";
 
 import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
@@ -14,11 +15,6 @@ export const Item = (props: any) => {
       </span>
     </div>
   );
-};
-
-const getAlbumImage = (data: any[]) => {
-  const largeImage = data[3];
-  return largeImage["#text"];
 };
 
 function Carousel(props: any) {
@@ -50,10 +46,12 @@ function Carousel(props: any) {
                   <Image
                     key={key}
                     className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
-                    src={getAlbumImage(item.image)}
+                    src={getImageFromAPi({ images: item.image, size: 3 })}
                   />
                   <div className="vinyl-wrapper ease-out-cubic-back">
-                    <Vinyl image={getAlbumImage(item.image)} />
+                    <Vinyl
+                      image={getImageFromAPi({ images: item.image, size: 3 })}
+                    />
                   </div>
                 </>
               </Item>
