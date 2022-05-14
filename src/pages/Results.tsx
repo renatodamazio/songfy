@@ -3,10 +3,11 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import getAlbuns, { getMockAlbuns } from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
+import { setAlbumTrack } from "../store/reducers/albumTrackReducer";
 import Carousel from "../components/Carousel";
 import VinylPlayer from "../components/VinylPlayer";
-import getAlbumTracks from "../api/getAlbumTrack";
-import { useSearchParams  } from "react-router-dom";
+import getAlbumTracks, { getMockAlbumTracks } from "../api/getAlbumTrack";
+import { useSearchParams } from "react-router-dom";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
@@ -17,7 +18,7 @@ export default function Results() {
   const album: any = useSelector<any>((state) => state.albumOpen);
   const location = useLocation();
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [{}, setSearchParams] = useSearchParams();
 
   const getArtistAlbums = async (query: string) => {
     setLoading(true);
@@ -40,11 +41,14 @@ export default function Results() {
   const loadAlbumTracks = async (props: any) => {
     const { artist, album } = props;
     setLoadingTracks(true);
-    const tracks = await getAlbumTracks(artist, album);
+
+    // const albumTracks: any = await getAlbumTracks(artist, album);
+    const albumTracks: any = getMockAlbumTracks();
+    const tracks = albumTracks?.tracks?.track || albumTracks
     setLoadingTracks(false);
 
     setSearchParams(`album=${album}`);
-    console.log(tracks);
+    dispatch(setAlbumTrack(tracks));
   };
 
   useEffect(() => {
@@ -75,8 +79,8 @@ export default function Results() {
 
   return (
     <div>
-      <VinylPlayer />
-      <Carousel loading={loadinTracks} items={vinyl} />{" "}
+      {album.albumOpen && <VinylPlayer />}
+      <div><Carousel loading={loadinTracks} items={vinyl} /></div>
       {notFound ? "Não foi encontrado" : ""}
     </div>
   );
