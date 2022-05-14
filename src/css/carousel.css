@@ -52,7 +52,3 @@
   transform: translate3d(10px, -93px, -24px) rotateX(9deg) translateY(-24px);
 }
 
-
-.open-album {
-  @apply absolute z-20 bg-purple text-white rounded-full p-8  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-}

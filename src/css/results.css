@@ -27,6 +27,10 @@
   animation-delay: 0.5s;
 }
 
+.swiper-slide-active .load-album {
+  @apply opacity-100 visible;
+} 
+
 .swiper-slide-active .vinyl-wrapper {
   animation: showVinyl 0.4s ease-in-out forwards;
   animation-delay: 0.5s;
@@ -35,7 +39,33 @@
 .vinyl-wrapper {
   position: absolute;
   top: 0;
-  transform: scale(0.88)
+  transform: scale(0.88);
+}
+
+.load-album {
+  @apply absolute z-20 
+  invisible
+  opacity-0
+  bg-white bg-opacity-30 
+  shadow-white shadow-md 
+  text-white 
+  rounded-xl
+  backdrop-blur-sm
+  border-2
+  border-white
+  border-opacity-80  
+  hover:bg-opacity-80
+  hover:bg-yellow
+  hover:scale-105
+  hover:text-white
+  hover:shadow-sm
+  active:scale-100
+  active:opacity-90
+  p-3 
+   top-1/2 
+   left-1/2 
+   -translate-x-1/2 
+   -translate-y-1/2;
 }
 
 @keyframes backForwardVinylCover {
@@ -47,6 +77,6 @@
 @keyframes showVinyl {
   100% {
     transition-delay: 1000;
-    transform: translateX(120px)  rotate(-180deg) scale(0.88);
+    transform: translateX(120px) rotate(-180deg) scale(0.88);
   }
 }

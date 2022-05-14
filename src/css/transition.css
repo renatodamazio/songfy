@@ -5,3 +5,7 @@
 .ease-out-cubic-back {
     transition: all 500ms cubic-bezier(0.705, -0.180, 0.250, 1.190);
 }
+
+.ease-in-out-cubic {
+    transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+}

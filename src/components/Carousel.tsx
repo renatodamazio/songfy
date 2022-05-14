@@ -5,6 +5,8 @@ import Vinyl from "../components/Vinyl";
 import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
+import { MdPlayArrow } from "react-icons/md";
+import { IconContext } from "react-icons";
 
 import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
@@ -87,7 +89,9 @@ export default function Carousel(props: any) {
             <SwiperSlide key={key}>
               <Item name={item.name} indice={key}>
                 <>
-                  <button className="open-album"></button>
+                  <button className="load-album ease-in-out-cubic">
+                   <MdPlayArrow fontSize={50}/>
+                  </button>
 
                   <Image
                     key={key}
