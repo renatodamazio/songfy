@@ -5,7 +5,6 @@ import getImageFromAPi from "../utils/getImageFromApi";
 import Playlist from "./Playlist";
 import Vinyl from "./Vinyl";
 import Image from "./Image";
-
 interface boundingInterface {
   x: number;
   y: number;
@@ -57,23 +56,25 @@ export default function VinylPlayer() {
     "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20";
 
   return (
-    <div
-      className={centerElement}
-      style={{
-        top: `${position?.y}px`,
-        transform: "scale(1.1) translateX(-50%)",
-      }}
-    >
-      <div>
-        <Image
-          src={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-          className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
-        />
-        <Vinyl
-          image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-          className="absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2 scale-90"
-        />
+    <>
+      <div
+        className={centerElement}
+        style={{
+          top: `${position?.y}px`,
+          transform: "scale(1.1) translateX(-50%)",
+        }}
+      >
+        <div>
+          <Image
+            src={getImageFromAPi({ images: albumOpen.image, size: 3 })}
+            className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
+          />
+          <Vinyl
+            image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
+            className="absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2 scale-90"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

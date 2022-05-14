@@ -6,6 +6,7 @@ import { setAlbums } from "../store/reducers/albumsReducer";
 import { setAlbumTrack } from "../store/reducers/albumTrackReducer";
 import Carousel from "../components/Carousel";
 import VinylPlayer from "../components/VinylPlayer";
+import TurnTable from "../components/Turntable";
 import getAlbumTracks, { getMockAlbumTracks } from "../api/getAlbumTrack";
 import { useSearchParams } from "react-router-dom";
 
@@ -78,10 +79,11 @@ export default function Results() {
   }, [album]);
 
   return (
-    <div>
+    <>
+      <TurnTable />
       {album.albumOpen && <VinylPlayer />}
-      <div><Carousel loading={loadinTracks} items={vinyl} /></div>
+      {/* <div><Carousel loading={loadinTracks} items={vinyl} /></div> */}
       {notFound ? "Não foi encontrado" : ""}
-    </div>
+    </>
   );
 }

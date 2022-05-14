@@ -85,6 +85,6 @@
 @keyframes showVinyl {
   100% {
     transition-delay: 1000;
-    transform: translateX(120px) rotate(-180deg) scale(0.88);
+    transform: translateX(46%) rotate(-180deg) scale(0.88);
   }
 }
