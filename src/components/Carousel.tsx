@@ -18,7 +18,9 @@ export const Item = (props: any) => {
       data-album-name={props.name}
       className="carousel-item"
     >
-      <span className="ease-out-cubic rounded-lg  relative">{props.children}</span>
+      <span className="ease-out-cubic rounded-lg  relative">
+        {props.children}
+      </span>
     </div>
   );
 };
@@ -60,44 +62,47 @@ const ActiveSlider = async (query: any) => {
 
 export default function Carousel(props: any) {
   return (
-    <Swiper
-      direction="vertical"
-      modules={[EffectCoverflow]}
-      effect="coverflow"
-      spaceBetween={0}
-      centeredSlides={true}
-      speed={900}
-      loop={false}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: false,
-      }}
-      slidesPerView={5}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      {props.items.map((item: any, key: number) => {
-        return (
-          <SwiperSlide key={key}>
-            <Item name={item.name} indice={key}>
-              <>
-                <Image
-                  key={key}
-                  className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
-                  src={getAlbumImage(item.image)}
-                />
-                <div className="vinyl-cover ease-out-cubic-back">
-                    <button className="open-album">View Album</button>
-                    <Vinyl image={getAlbumImage(item.image)}/>
-                </div>
-              </>
-            </Item>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+    <>
+      <Swiper
+        direction="vertical"
+        modules={[EffectCoverflow]}
+        effect="coverflow"
+        spaceBetween={0}
+        centeredSlides={true}
+        speed={900}
+        loop={false}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        slidesPerView={5}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        {props.items.map((item: any, key: number) => {
+          return (
+            <SwiperSlide key={key}>
+              <Item name={item.name} indice={key}>
+                <>
+                  <button className="open-album"></button>
+
+                  <Image
+                    key={key}
+                    className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
+                    src={getAlbumImage(item.image)}
+                  />
+                  <div className="vinyl-wrapper ease-out-cubic-back">
+                    <Vinyl image={getAlbumImage(item.image)} />
+                  </div>
+                </>
+              </Item>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </>
   );
 }

@@ -22,19 +22,21 @@
   width: 100%;
 }
 
-.vinyl-cover {
+.swiper-slide-active .carousel-item span > img {
+  animation: backForwardVinylCover 0.4s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+.swiper-slide-active .vinyl-wrapper {
+  animation: showVinyl 0.4s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
+
+.vinyl-wrapper {
   position: absolute;
   top: 0;
-  z-index: 1;
-  left: 0px;
-  width: 90%;
-  height: 90%;
+  transform: scale(0.88)
 }
-
-.vinyl-cover .vinyl-disk {
-  
-}
-
 
 @keyframes backForwardVinylCover {
   100% {
@@ -45,6 +47,6 @@
 @keyframes showVinyl {
   100% {
     transition-delay: 1000;
-    transform: translateX(120px) rotate(180deg);
+    transform: translateX(120px)  rotate(-180deg) scale(0.88);
   }
 }
