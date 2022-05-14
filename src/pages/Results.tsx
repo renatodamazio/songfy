@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import getAlbuns, { getMockAlbuns } from "../api/getAlbuns";
-import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
-import Carousel  from "../components/Carousel";
+import { setAlbums } from "../store/reducers/albumsReducer";
+import { setOpen } from "../store/reducers/albumOpenReducer";
+import Carousel from "../components/Carousel";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [vinyl, setVinyl] = useState<any>([]);
-  const [openAlbum, setOpenAlbum] = useState<any>([]);
   const albums: any = useSelector<any>((state) => state.albums);
-
+  const albumOpen: any = useSelector<any>((state) => state.albumOpen);
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -33,7 +33,6 @@ export default function Results() {
     setLoading(false);
   };
 
-
   useEffect(() => {
     if (albums.album === "") {
       const pathname = location.pathname;
@@ -51,18 +50,9 @@ export default function Results() {
     mountAlbumProperties();
   }, [albums]);
 
-  const ShowVinyl = () => {
-    return (
-      <div id="results-wrapper">
-        <Carousel items={vinyl} setOpenAlbum={setOpenAlbum} openAlbum={openAlbum}/>
-      </div>
-    );
-  };
-
   return (
     <div>
-      {loading && !notFound ? "loading" : <ShowVinyl />}
-      {notFound ? "Não foi encontrado" : ""}
+      <Carousel items={vinyl} /> {notFound ? "Não foi encontrado" : ""}
     </div>
   );
 }

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "../components/Image";
-import { useSelector, useDispatch } from "react-redux";
 import Vinyl from "../components/Vinyl";
-import { setAlbums, setOpen } from "../store/reducers/albumsReducer";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper";
-import { MdPlayArrow } from "react-icons/md";
+import ButtonLoading from "./ButtonLoading";
 
 import "swiper/css/effect-coverflow";
 export const Item = (props: any) => {
@@ -29,14 +27,7 @@ const getAlbumImage = (data: any[]) => {
   return largeImage["#text"];
 };
 
-
-export default function Carousel(props: any) {
-  const [pickUpAlbum, setPickUpAlbum] = useState<any>("");
-  const { setOpenAlbum } = props;
-
-  useEffect(() => {
-    setOpenAlbum(pickUpAlbum);
-  }, []);
+function Carousel(props: any) {
   return (
     <>
       <Swiper
@@ -59,17 +50,38 @@ export default function Carousel(props: any) {
         {props.items.map((item: any, key: number) => {
           return (
             <SwiperSlide key={key}>
-              <Item
-                name={item.name}
-                indice={key}
-              >
+              <Item name={item.name} indice={key}>
                 <>
-                  <button
-                    className={`load-album ease-in-out-cubic ${item.name === pickUpAlbum.name ? "rounded-[50%]" : ""}`}
-                    onClick={() => setPickUpAlbum(item)}
+                <ButtonLoading album={item}/>
+                  {/* <button
+                    className={`load-album ease-in-out-cubic ${
+                      item.name === pickUpAlbum.name
+                        ? "rounded-[50%] bg-white hover:bg-gray-light"
+                        : ""
+                    }`}
+                    onClick={(ev) => {
+                      ev.preventDefault();
+                      if (item.name !== pickUpAlbum.name) {
+                        // setPickUpAlbum(item);
+                      }
+                    }}
                   >
-                    <MdPlayArrow fontSize={50} />
-                  </button>
+                    <MdPlayArrow
+                      fontSize={50}
+                      className={
+                        item.name === pickUpAlbum.name
+                          ? "opacity-0"
+                          : "opacity-1"
+                      }
+                    />
+                    <Loader
+                      className={`${
+                        item.name === pickUpAlbum.name
+                          ? "opacity-1"
+                          : "opacity-0"
+                      } absolute top-0 left-0 -my-1 -mx-1`}
+                    />
+                  </button> */}
                   <Image
                     key={key}
                     className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
@@ -87,3 +99,7 @@ export default function Carousel(props: any) {
     </>
   );
 }
+
+const CarouselMemo = React.memo(Carousel);
+
+export default CarouselMemo;
