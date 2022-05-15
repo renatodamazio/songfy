@@ -1,24 +1,23 @@
-.rotate-table {
-  transform: translateZ(-100px) rotateX(-62deg) rotateY(0deg);
+.cube.rotate-table {
+  transform: translateZ(-100px) rotateY( 45deg) rotateX(45deg);
 }
 
 .cube {
   transform-style: preserve-3d;
   margin: 0 auto;
-  width: 300px;
+  width: 580px;
   height: 300px;
+  transform: none;
+
   @apply z-10 relative transition-ease-in-out-cubic rounded-md  duration-500 flex content-center items-center;
 }
 
 .cube > div {
   position: absolute;
-  width: 400px;
-  height: 400px;
   border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
-  @extends .middle-screen;
 }
 
 .cube .front {

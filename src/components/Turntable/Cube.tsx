@@ -7,8 +7,10 @@ export default function Table(props: any) {
   const { rotate } = props;
 
   return (
-    <div className={`${rotate ? "rotate-table" : ""}  cube `}>
-      <div className="top"><Baoard /></div>
+    <div className={`${rotate ? "rotate-table" : ""} cube`}>
+      <div className="board"></div>
+      <div className="wood"></div>
+      <div className="wood wood-lateral right"></div>
       {/* <div className="wood"></div> */}
       {/* <div className="back">BACK</div> */}
       {/* <div className="front">FRONT</div>*/}

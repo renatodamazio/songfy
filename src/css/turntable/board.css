@@ -1,11 +1,33 @@
 .board {
-    @apply w-[500px] h-[348px] bg-white absolute rounded-md;
+    @apply w-[580px] h-[348px] bg-white absolute rounded-md z-10;
 }
 
 .board:before {
     content: "";
 }
 
-.cube div.wood {
-    @apply w-full h-10 absolute bg-brown top-0;
+.cube .wood  {
+    top: 100%;
+    transform: rotateX(115deg) translateZ(1px) skew(-1deg) translateY(-22px);
+    position: absolute;
+    z-index: 0;
+    height: 2.5rem;
+    width: 576px;
+    right: 0;
+    --tw-bg-opacity: 1;
+    background-color: rgb(188 108 37 / var(--tw-bg-opacity));
+    @apply w-full h-10 absolute bg-brown z-0;
+}
+
+.cube .wood-lateral {
+    top: -8%;
+    width: 110px;
+    height: 349px;
+    transform: rotateY(71deg) rotateZ(0deg) skew(1deg, -10deg);
+    transform-origin: 1% 0;
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    --tw-bg-opacity: 1;
+    @apply absolute bg-brown z-0;
 }
