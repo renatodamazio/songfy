@@ -1,0 +1,11 @@
+.board {
+    @apply w-[500px] h-[348px] bg-white absolute rounded-md;
+}
+
+.board:before {
+    content: "";
+}
+
+.cube div.wood {
+    @apply w-full h-10 absolute bg-brown top-0;
+}

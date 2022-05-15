@@ -22,6 +22,7 @@ module.exports = {
 
     transitionProperty: {
       "ease-in-renato": "cubic-bezier(0.895, 0.030, 0.685, 0.220);",
+      "ease-in-out-cubic": "cubic-bezier(0.785, 0.135, 0.150, 0.860)"
     },
   },
   plugins: [],

@@ -11,7 +11,7 @@
 @import "./css/carousel.css";
 @import "./css/results.css";
 @import "./css/transition.css";
-@import "./css/turntable.css";
+@import "./css/turntable/app.css";
 html,
 body,
 #root {
@@ -20,6 +20,8 @@ body,
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   font-size: 16px;
+
+  @apply bg-brown-light
 }
 
 * {

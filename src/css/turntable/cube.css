@@ -1,0 +1,65 @@
+.rotate-table {
+  transform: translateZ(-100px) rotateX(-62deg) rotateY(0deg);
+}
+
+.cube {
+  transform-style: preserve-3d;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  @apply z-10 relative transition-ease-in-out-cubic rounded-md  duration-500 flex content-center items-center;
+}
+
+.cube > div {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extends .middle-screen;
+}
+
+.cube .front {
+  transform: rotateY(0deg) translateZ(200px);
+}
+
+.cube .right {
+  transform: rotateY(90deg) translateZ(200px);
+}
+
+.cube .back {
+  transform: rotateY(180deg) translateZ(200px);
+}
+
+.cube .left {
+  transform: rotateY(-90deg) translateZ(200px);
+}
+
+.cube .top {
+  transform: rotateX(90deg) translateZ(200px);
+}
+
+.cube .bottom {
+  transform: rotateX(-90deg) translateZ(200px);
+}
+
+.front {
+  background: hsla(0, 100%, 50%, 0.7);
+}
+.right {
+  background: hsla(60, 100%, 50%, 0.7);
+}
+.back {
+  background: hsla(120, 100%, 50%, 0.7);
+}
+.left {
+  background: hsla(180, 100%, 50%, 0.7);
+}
+.top {
+  background: hsla(240, 100%, 50%, 0.7);
+}
+.bottom {
+  background: hsla(300, 100%, 50%, 0.7);
+}
