@@ -14,6 +14,7 @@ export default function Needle() {
         <span className="box-right">4</span>
         <span className="box-top">5</span>
         <span className="box-bottom">6</span>
+        <i className="needle"></i>
       </div>
     </>
   );

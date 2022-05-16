@@ -39,16 +39,34 @@ span.box-top {
 }
 
 .handle-needle {
-    position: absolute;
-    right: 0px;
-    border: 15px solid #00000000;
-    border-bottom-color: #0000;
-    width: -1px;
-    height: 0px;
-    top: 0;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 0%;
-    box-shadow: -5px -5px 0px 5px #000;
-    transform-origin: 17% -72%;
-    transform: rotateX(90deg) rotateY(180deg) translateZ(28px);
+  position: absolute;
+  right: 0px;
+  border: 15px solid #00000000;
+  border-bottom-color: #0000;
+  width: -1px;
+  height: 0px;
+  top: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 0%;
+  box-shadow: -5px -5px 0px 5px #000;
+  transform-origin: 17% -72%;
+  transform: rotateX(90deg) rotateY(180deg) translateZ(28px);
+}
+
+.needle {
+  width: 5px;
+  height: 30px;
+  background: #999999;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-animation: move 5s infinite;
+  transform: rotateY(0) translate(37px, -10px) translateZ(8px);
+  transform-origin: bottom;
+  transform-style: preserve-3d;
 }
