@@ -1,45 +1,54 @@
 .needle-wrapper {
   transform-style: preserve-3d;
-  transform: rotateX(0deg) rotateY(0deg) translate(10px, -21px);
+  transform: rotateX(80deg) rotateY(-44deg) translate(-11px, 2px);
   @apply absolute left-1/2 z-40 w-[40px] h-[20px] bg-gray;
 }
 
 .needle-wrapper > span {
-  @apply absolute w-12 h-6;
+  @apply absolute w-12 h-6 bg-[#3b3b3b];
 }
 
 .box-right {
-  background: rgba(255, 0, 0, 0.5);
   transform: rotateY(0deg) translateZ(20px);
 }
 
 span.box-left {
-  background: rgba(255, 255, 0, 0.5);
   transform: rotateX(0deg);
 }
 
 span.box-front {
   width: 20px;
-  background: rgba(0, 0, 255, 0.5);
   transform: rotateY(90deg) rotateX(0deg) translateX(-10px) translateZ(-10px);
 }
 
 span.box-back {
   width: 20px;
-  background: rgba(0, 0, 255, 0.5);
   transform: rotateY(90deg) rotateX(0deg) translateX(-10px) translateZ(37px);
 }
 
 span.box-bottom {
   height: 20px;
-  background: rgba(255, 255, 0, 0.5);
   transform-origin: 0% 0%;
   transform: rotateX(90deg);
 }
 
 span.box-top {
   height: 20px;
-  background: rgba(255, 255, 0, 0.5);
   transform-origin: 0% 0%;
   transform: rotateX(90deg) translateZ(-24px);
+}
+
+.handle-needle {
+    position: absolute;
+    right: 0px;
+    border: 15px solid #00000000;
+    border-bottom-color: #0000;
+    width: -1px;
+    height: 0px;
+    top: 0;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 0%;
+    box-shadow: -5px -5px 0px 5px #000;
+    transform-origin: 17% -72%;
+    transform: rotateX(90deg) rotateY(180deg) translateZ(28px);
 }

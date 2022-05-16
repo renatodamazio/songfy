@@ -7,6 +7,7 @@ export default function Needle() {
      */
     <>
       <div className="needle-wrapper">
+        <i className="handle-needle"></i>
         <span className="box-front">1</span>
         <span className="box-back">2</span>
         <span className="box-left">3</span>
