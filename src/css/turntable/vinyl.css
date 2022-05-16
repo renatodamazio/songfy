@@ -1,0 +1,7 @@
+.vinyl-on-table {
+  @apply absolute -top-1/2 z-20 translate-x-1/2 translate-y-1/2 scale-105;
+}
+
+.vinyl-base {
+  @apply absolute -top-1/2 z-10 translate-x-1/2 translate-y-1/2 bg-purple w-32 h-32 rounded-full;
+}

@@ -8,6 +8,8 @@ export default function Table(props: any) {
 
   return (
     <div className={`${rotate ? "rotate-table" : ""} cube`}>
+      <div className="vinyl-on-table"><Vinyl/></div>
+      <div className="vinyl-base"></div>
       <div className="board"></div>
       <div className="wood"></div>
       <div className="wood wood-lateral right"></div>

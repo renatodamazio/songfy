@@ -14,7 +14,6 @@
 
 .cube > div {
   position: absolute;
-  border: 1px solid red;
   display: flex;
   align-items: center;
   justify-content: center;
