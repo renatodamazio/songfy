@@ -6,9 +6,14 @@ export default function Needle() {
      * *Needle base...
      */
     <>
-      <div ></div>
-
-      <button>turn on</button>
+      <div className="needle-wrapper">
+        <span className="box-front">1</span>
+        <span className="box-back">2</span>
+        <span className="box-left">3</span>
+        <span className="box-right">4</span>
+        <span className="box-top">5</span>
+        <span className="box-bottom">6</span>
+      </div>
     </>
   );
 }

@@ -10,14 +10,7 @@ export default function Table(props: any) {
 
   return (
     <>
-      <div className="needle-wrapper">
-        <span className="box-front">1</span>
-        <span className="box-back">2</span>
-        <span className="box-left">3</span>
-        <span className="box-right">4</span>
-        <span className="box-top">5</span>
-        <span className="box-bottom">6</span>
-      </div>
+     
       <div className={`${rotate ? "rotate-table" : ""} cube`}>
         <div className="vinyl-on-table">
           <Vinyl />
@@ -29,7 +22,9 @@ export default function Table(props: any) {
               return <span key={item} className={`spot-${item}`}></span>;
             })}
           </div>
-          <div className="stick-long"></div>
+          <div className="stick-long">
+            <Needle/>
+          </div>
         </div>
         <div className="board"></div>
         <div className="wood"></div>
