@@ -1,5 +1,15 @@
 .vinyl-on-table {
+  perspective: 400px;
   @apply absolute -top-1/2 z-20 translate-x-1/2 translate-y-1/2 scale-105;
+}
+
+.vinyl-on-table:before {
+  content: "";
+  @apply w-full h-full absolute bg-gray-dark rounded-full scale-105 border-2 border-gray-dark shadow-md shadow-black;
+}
+
+.vinyl-on-table .vinyl-disk-container{
+  transform: translateZ(10px);
 }
 
 .vinyl-base {
