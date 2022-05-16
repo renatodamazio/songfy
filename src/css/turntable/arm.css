@@ -1,0 +1,57 @@
+.arm {
+  right: 0px;
+  top: 10px;
+  z-index: 99;
+  transform-style: preserve-3d;
+  transform: rotate(90deg) translateX(47px) translateY(-100px);
+  width: 300px;
+  height: 39px;
+  border: 1px solid black;
+}
+
+.arm-components {
+  transform-style: preserve-3d;
+}
+
+.arm .stick {
+  width: 100px;
+  height: 20px;
+  background: #000;
+  position: absolute;
+}
+
+.stick-long {
+  transform-style: preserve-3d;
+  transform: rotate(90deg) translate(-113px, -42px) translateZ(41px);
+  @apply absolute top-0 w-[17px] h-[272px] bg-[#4a4a4a] rounded-md;
+}
+
+.stick-long:before,
+.stick-long:after {
+  content: "";
+  transform: translate(0px, 0px) translateZ(2px);
+  @apply absolute w-[17px] h-full  rounded-md;
+}
+
+.stick-long:after {
+  transform: translate(0px, 0px) translateZ(4px);
+  background: #3b3b3b;
+}
+
+.stick-round-top {
+  transform-style: preserve-3d;
+}
+
+.stick-round-top span {
+  @apply absolute h-[5px] w-[259px] bg-white rounded-md;
+}
+
+.spot-1 {
+  @apply bg-gray-light;
+  transform: rotateX(79deg) translateY(45px) translateX(-90px);
+}
+
+span.spot-2 {
+  @apply bg-orange;
+  transform: rotateX(97deg) translateY(42px) translateX(-90px);
+}

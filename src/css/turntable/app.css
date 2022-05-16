@@ -1,3 +1,5 @@
 @import "./cube";
 @import "./board";
 @import "./vinyl";
+@import "./arm";
+@import "./needle";

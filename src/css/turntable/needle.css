@@ -1,0 +1,45 @@
+.needle-wrapper {
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) translate(10px, -21px);
+  @apply absolute left-1/2 z-40 w-[40px] h-[20px] bg-gray;
+}
+
+.needle-wrapper > span {
+  @apply absolute w-12 h-6;
+}
+
+.box-right {
+  background: rgba(255, 0, 0, 0.5);
+  transform: rotateY(0deg) translateZ(20px);
+}
+
+span.box-left {
+  background: rgba(255, 255, 0, 0.5);
+  transform: rotateX(0deg);
+}
+
+span.box-front {
+  width: 20px;
+  background: rgba(0, 0, 255, 0.5);
+  transform: rotateY(90deg) rotateX(0deg) translateX(-10px) translateZ(-10px);
+}
+
+span.box-back {
+  width: 20px;
+  background: rgba(0, 0, 255, 0.5);
+  transform: rotateY(90deg) rotateX(0deg) translateX(-10px) translateZ(37px);
+}
+
+span.box-bottom {
+  height: 20px;
+  background: rgba(255, 255, 0, 0.5);
+  transform-origin: 0% 0%;
+  transform: rotateX(90deg);
+}
+
+span.box-top {
+  height: 20px;
+  background: rgba(255, 255, 0, 0.5);
+  transform-origin: 0% 0%;
+  transform: rotateX(90deg) translateZ(-24px);
+}
