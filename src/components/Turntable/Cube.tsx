@@ -12,6 +12,8 @@ export default function Table(props: any) {
     <>
      
       <div className={`${rotate ? "rotate-table" : ""} cube`}>
+      <div className="vinyl-pin">333</div>
+
         <div className="vinyl-on-table">
           <Vinyl />
         </div>

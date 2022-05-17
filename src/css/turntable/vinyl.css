@@ -1,17 +1,28 @@
 .vinyl-on-table {
   perspective: 400px;
-  @apply absolute -top-1/2 z-20 translate-x-1/2 translate-y-1/2 scale-105;
+  transform-style: preserve-3d;
+  @apply absolute w-[300px] h-[300px] rounded-full -top-1/2 z-20 translate-x-1/2 translate-y-1/2 scale-105;
 }
 
-.vinyl-on-table:before {
+.vinyl-on-table:before,
+.vinyl-on-table:after {
   content: "";
-  @apply w-full h-full absolute bg-gray-dark rounded-full scale-105 border-2 border-gray-dark shadow-md shadow-black;
+  @apply w-full h-full absolute bg-gray-dark rounded-full scale-105 border-2 border-gray-dark shadow-md shadow-gray-light;
 }
 
-.vinyl-on-table .vinyl-disk-container{
+.vinyl-on-table:after{
+  content: "";
+  @apply bg-black w-[99%] h-[99%];
+}
+
+.vinyl-on-table .vinyl-disk-container {
   transform: translateZ(10px);
 }
 
 .vinyl-base {
   @apply absolute -top-1/2 z-10 translate-x-1/2 translate-y-1/2 bg-purple w-32 h-32 rounded-full;
+}
+
+.vinyl-pin {
+  @apply absolute w-4 h-4 bg-white top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 z-20;
 }
