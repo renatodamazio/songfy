@@ -10,14 +10,21 @@ export default function Table(props: any) {
 
   return (
     <>
-     
+
       <div className={`${rotate ? "rotate-table" : ""} cube`}>
-      <div className="vinyl-pin">333</div>
+      <div className="vinyl-pin">
+        <span className="pin-left"></span>
+        <span className="pin-right"></span>
+        <span className="pin-front"></span>
+        <span className="pin-back"></span>
+        <span className="pin-top"></span>
+      </div>
+
 
         <div className="vinyl-on-table">
           <Vinyl />
         </div>
-        <div className="vinyl-base"></div>
+
         <div className="arm">
           <div className="stick-round-top">
             {totalRounds.map((item: number) => {
@@ -25,17 +32,12 @@ export default function Table(props: any) {
             })}
           </div>
           <div className="stick-long">
-            <Needle/>
+            <Needle />
           </div>
         </div>
         <div className="board"></div>
         <div className="wood"></div>
         <div className="wood wood-lateral right"></div>
-        {/* <div className="wood"></div> */}
-        {/* <div className="back">BACK</div> */}
-        {/* <div className="front">FRONT</div>*/}
-        {/* <div className="right"></div> */}
-        {/* <div className="left">LEFT</div>  */}
       </div>
     </>
   );

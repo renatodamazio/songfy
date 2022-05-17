@@ -10,7 +10,7 @@
   @apply w-full h-full absolute bg-gray-dark rounded-full scale-105 border-2 border-gray-dark shadow-md shadow-gray-light;
 }
 
-.vinyl-on-table:after{
+.vinyl-on-table:after {
   content: "";
   @apply bg-black w-[99%] h-[99%];
 }
@@ -24,5 +24,32 @@
 }
 
 .vinyl-pin {
-  @apply absolute w-4 h-4 bg-white top-1/2 left-1/2 translate-x-1/2 translate-y-1/2 z-20;
+  transform:translateZ(11px) translate(2px, -8px);
+  transform-style: preserve-3d;
+  @apply absolute w-4 h-4 bg-transparent top-1/2 left-1/2  z-20 rounded-full;
+}
+
+.vinyl-pin span {
+  @apply absolute w-[1rem] h-[5px] bg-gray-dark;
+}
+
+.vinyl-pin span.pin-left {
+  transform: rotateY(90deg) translateZ(3px);
+}
+
+.vinyl-pin span.pin-right {
+  transform: rotateY(90deg) translateZ(-3px);
+}
+
+.vinyl-pin span.pin-front {
+  transform: rotateY(90deg) rotateX(-90deg) translateZ(3px);
+}
+
+.vinyl-pin span.pin-back {
+  transform: rotateY(90deg) rotateX(-90deg) translateZ(-3px);
+}
+
+.vinyl-pin span.pin-top {
+  transform: translateZ(8px);
+  @apply bg-white w-[6px] h-[6px] rounded-sm;
 }
