@@ -3,7 +3,7 @@
   top: 10px;
   z-index: 99;
   transform-style: preserve-3d;
-  transform: rotate(90deg) translateX(47px) translateY(-100px);
+  transform: rotate(90deg) translateX(47px) translateZ(-10px) translateY(-100px);
   width: 300px;
   height: 39px;
   border: 1px solid black;
@@ -23,14 +23,14 @@
 .stick-long {
   transform-style: preserve-3d;
   transform: rotate(90deg) translate(-113px, -42px) translateZ(41px);
-  @apply absolute top-0 w-[17px] h-[272px] bg-[#4a4a4a] rounded-md;
+  @apply absolute top-0 w-[8px] h-[272px] bg-[#4a4a4a] rounded-md;
 }
 
 .stick-long:before,
 .stick-long:after {
   content: "";
   transform: translate(0px, 0px) translateZ(2px);
-  @apply absolute w-[17px] h-full  rounded-md;
+  @apply absolute w-[8px] h-full  rounded-md;
 }
 
 .stick-long:after {
@@ -43,15 +43,15 @@
 }
 
 .stick-round-top span {
-  @apply absolute h-[5px] w-[259px] bg-white rounded-md;
+  @apply absolute h-[5px] w-[259px] bg-black rounded-md;
 }
 
 .spot-1 {
   @apply bg-gray-light;
-  transform: rotateX(79deg) translateY(45px) translateX(-90px);
+  transform: rotateX(83deg) translateY(43px) translateX(-90px);
 }
 
 span.spot-2 {
-  @apply bg-orange;
-  transform: rotateX(97deg) translateY(42px) translateX(-90px);
+  @apply bg-black;
+  transform: rotateX(93deg) translateY(40px) translateX(-94px);
 }

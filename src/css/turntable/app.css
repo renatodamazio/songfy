@@ -2,4 +2,5 @@
 @import "./board";
 @import "./vinyl";
 @import "./arm";
+@import "./arm-spinner";
 @import "./needle";
