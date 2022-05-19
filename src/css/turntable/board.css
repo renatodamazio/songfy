@@ -1,42 +1,76 @@
 .board {
-    @apply w-[580px] h-[348px] bg-[white] absolute rounded-md z-10;
+  @apply w-[580px] h-[348px] bg-[white] absolute rounded-none z-10;
 }
 
 .cube.rotate-table .board:before {
-    transform: translate(3px, -3px);
+  transform: translate(3px, -3px);
 }
 
 .board:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    transform-origin: 0% 0%;
-    border-radius: 0.375rem;
-    @apply transition-ease-in-out-cubic bg-[#242323];
+  content: "";
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 0%;
+  @apply transition-ease-in-out-cubic bg-[#242323] border border-[#fff];
 }
 
-.cube .wood  {
-    top: 100%;
-    transform: rotateX(115deg) translateZ(1px) skew(-1deg) translateY(-22px);
-    position: absolute;
-    z-index: 0;
-    height: 2.5rem;
-    width: 576px;
-    right: 0;
-    --tw-bg-opacity: 1;
-    background-color: rgb(188 108 37 / var(--tw-bg-opacity));
-    @apply w-full h-10 absolute bg-brown z-0;
+.wood-wrapper {
+  transform-style: preserve-3d;
+  transform-origin: 0% 0%;
+  transform: translateZ(-20px);
+  @apply absolute w-full h-full min-h-[348px];
 }
 
-.cube .wood-lateral {
-    top: -8%;
-    width: 110px;
-    height: 349px;
-    transform: rotateY(71deg) rotateZ(0deg) skew(1deg, -10deg);
-    transform-origin: 1% 0;
-    position: absolute;
-    z-index: 0;
+.wood-wrapper .wood {
+  top: 100%;
+  position: absolute;
+  --tw-bg-opacity: 1;
+  background-color: rgb(188 108 37 / var(--tw-bg-opacity));
+  @apply w-[570px] h-10 absolute bg-[black] z-0;
+}
+
+.wood-wrapper .wood-front {
+  transform: translateZ(0px) translateY(-24px) rotateX(90deg);
+  @apply w-[569px];
+}
+
+.wood-wrapper .wood-back {
+    transform: translateZ(0px) translateY(-19px) rotateX(90deg);
+    @apply w-[566px] top-0;
+}
+
+.wood-wrapper .wood-left {
+  top: 0px;
+  width: 40px;
+  height: 345px;
+  transform: rotateY(90deg) translateZ(-15px);
+  left: 0;
+  position: absolute;
+  z-index: 0;
+  --tw-bg-opacity: 1;
+  @apply absolute bg-[black] z-0;
+}
+
+
+
+.wood-wrapper .wood-right {
+    top: 0px;
+    width: 40px;
+    height: 345px;
+    transform: rotateY(90deg) translateZ(551px);
     left: 0;
+    position: absolute;
+    z-index: 0;
     --tw-bg-opacity: 1;
-    @apply absolute bg-brown z-0;
+}
+
+.wood-wrapper .wood-bottom {
+    transform: rotateX(0) rotateY(0) translateZ(-20px);
+    @apply top-0 w-[570px] h-[345px] bg-gray-dark;
+}
+
+.about-author {
+    transform-style: preserve-3d;
+    transform: rotateY(180deg) translate(-50%, -50%);
+    @apply absolute top-1/2 left-1/2 ;
 }
