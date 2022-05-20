@@ -12,7 +12,8 @@ interface boundingInterface {
   left: number;
 }
 
-export default function VinylPlayer() {
+export default function VinylPlayer(props: any) {
+  const { className } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const album = useSelector((state: any) => state.albumTrack);
   const [position, setPositon] = useState<boundingInterface>();
@@ -58,20 +59,16 @@ export default function VinylPlayer() {
   return (
     <>
       <div
-        className={centerElement}
-        style={{
-          top: `${position?.y}px`,
-          transform: "scale(1.1) translateX(-50%)",
-        }}
+        className={`${centerElement} ${className} transition-ease-in-renato`}
       >
         <div>
           <Image
             src={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
+            className="cover-record inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
           />
           <Vinyl
             image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2 scale-90"
+            className="record absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2 scale-90"
           />
         </div>
       </div>

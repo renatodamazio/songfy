@@ -18,10 +18,11 @@ export const Item = (props: any) => {
 };
 
 function Carousel(props: any) {
-
+  const { className } = props;
   return (
     <>
       <Swiper
+        className={`${className ? className : ""}`}
         direction="vertical"
         modules={[EffectCoverflow]}
         effect="coverflow"

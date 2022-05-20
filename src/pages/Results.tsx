@@ -14,6 +14,8 @@ export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [vinyl, setVinyl] = useState<any>([]);
+  const [openClass, setOpenClass] = useState<any>([]);
+  const [turntableClass, setTurntableClass] = useState<any>([]);
   const [loadinTracks, setLoadingTracks] = useState<boolean>(false);
   const albums: any = useSelector<any>((state) => state.albums);
   const album: any = useSelector<any>((state) => state.albumOpen);
@@ -45,7 +47,7 @@ export default function Results() {
 
     // const albumTracks: any = await getAlbumTracks(artist, album);
     const albumTracks: any = getMockAlbumTracks();
-    const tracks = albumTracks?.tracks?.track || albumTracks
+    const tracks = albumTracks?.tracks?.track || albumTracks;
     setLoadingTracks(false);
 
     setSearchParams(`album=${album}`);
@@ -75,14 +77,43 @@ export default function Results() {
         artist: album.albumOpen.artist.name,
         album: album.albumOpen.name,
       });
+
+      OpenRecord();
     }
   }, [album]);
 
+  const OpenRecord = () => {
+    return setTimeout(() => {
+      setOpenClass("open-record");
+
+      setTimeout(() => {
+        setTurntableClass("opacity-1 z-[99]");
+      }, 500);
+    }, 100);
+  };
+
   return (
     <>
-      <TurnTable />
-      {album.albumOpen && <VinylPlayer />}
-      {/* <div><Carousel loading={loadinTracks} items={vinyl} /></div> */}
+      <TurnTable className={`${turntableClass}`}>
+        {album.albumOpen && (
+          <VinylPlayer className={`opacity-100 scale-x-105 ${openClass}`} />
+        )}
+      </TurnTable>
+
+      <div
+        className={`glass delay-500 ${
+          album.albumOpen ? " opacity-100 visible" : "invisible opacity-0"
+        }`}
+      ></div>
+      {
+        <Carousel
+          className={`${
+            album.albumOpen ? "scale-50  blur-lg" : "scale-100"
+          } transition-ease-in-out-cubic duration-200`}
+          loading={loadinTracks}
+          items={vinyl}
+        />
+      }
       {notFound ? "Não foi encontrado" : ""}
     </>
   );

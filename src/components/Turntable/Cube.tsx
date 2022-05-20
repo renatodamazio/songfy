@@ -18,7 +18,8 @@ export default function Table(props: any) {
         </div>
 
         <div className="vinyl-on-table">
-          <Vinyl />
+          {props.vinyl}
+          {/* <Vinyl /> */}
         </div>
 
         <div className="arm">
