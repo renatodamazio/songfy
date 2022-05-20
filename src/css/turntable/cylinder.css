@@ -1,0 +1,21 @@
+.cylinder {
+  @apply absolute w-1/2 h-1/2 bg-black rounded-full  border border-black left-[31px] top-[32px];
+}
+
+.cylinder-smaller {
+  transform-style: preserve-3d;
+  transform: rotateY(90deg) translateZ(-2px) translateX(-47px);
+  @apply absolute w-[60px] h-[60px] top-[-5px] left-[33px];
+}
+
+.cylinder-bigger {
+  transform-style: preserve-3d;
+  transform: rotateY(90deg) translateZ(-2px) translateX(-33px);
+  @apply absolute w-[80px] h-[80px] left-[36px] -top-[10px];
+}
+
+.cylinder-middle {
+    transform-style: preserve-3d;
+    transform: rotateY(90deg) translateZ(-2px) translateX(-33px);
+    @apply absolute w-[80px] h-[80px] left-[98px] -top-[10px];
+  }

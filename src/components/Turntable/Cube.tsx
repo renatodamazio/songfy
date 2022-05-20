@@ -28,6 +28,11 @@ export default function Table(props: any) {
           <div className="cylinder-bigger">
             <Cylinder total={16} />
           </div>
+
+          <div className="cylinder-middle">
+            <Cylinder total={30} />
+          </div>
+
           <div className="arm-spinner">
             <Cylinder total={8} className="spinner-piece" />
             <Cylinder total={23} />
