@@ -54,7 +54,7 @@ export default function VinylPlayer(props: any) {
   }, [id, searchParams]);
 
   const centerElement =
-    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20";
+    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 scale-[0.9] w-[337px] h-[337px]";
 
   return (
     <>
@@ -64,11 +64,11 @@ export default function VinylPlayer(props: any) {
         <div>
           <Image
             src={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="cover-record inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
+            className="cover-record  inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent -translate-x-[3px]"
           />
           <Vinyl
             image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="record absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2 scale-90"
+            className="record absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2"
           />
         </div>
       </div>

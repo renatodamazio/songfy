@@ -84,10 +84,10 @@ export default function Results() {
 
   const OpenRecord = () => {
     return setTimeout(() => {
-      setOpenClass("open-record");
+      // setOpenClass("open-record");
 
       setTimeout(() => {
-        setTurntableClass("opacity-1 z-[99]");
+        // setTurntableClass("opacity-1 z-[99]");
       }, 500);
     }, 100);
   };
@@ -100,15 +100,15 @@ export default function Results() {
         )}
       </TurnTable>
 
-      <div
+      {/* <div
         className={`glass delay-500 ${
           album.albumOpen ? " opacity-100 visible" : "invisible opacity-0"
         }`}
-      ></div>
+      ></div> */}
       {
         <Carousel
           className={`${
-            album.albumOpen ? "scale-50  blur-lg" : "scale-100"
+            album.albumOpen ? "album-opem" : "scale-100"
           } transition-ease-in-out-cubic duration-200`}
           loading={loadinTracks}
           items={vinyl}

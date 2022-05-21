@@ -15,16 +15,12 @@
   @apply bg-black w-[99%] h-[99%];
 }
 
-.vinyl-on-table .vinyl-disk-container {
-  transform: translateZ(10px);
-}
-
 .vinyl-base {
   @apply absolute -top-1/2 z-10 translate-x-1/2 translate-y-1/2 bg-purple w-32 h-32 rounded-full;
 }
 
 .vinyl-pin {
-  transform:translateZ(11px) translate(2px, -8px);
+  transform: translateZ(11px) translate(2px, -8px);
   transform-style: preserve-3d;
   @apply absolute w-4 h-4 bg-transparent top-1/2 left-1/2  z-20 rounded-full;
 }
@@ -52,4 +48,20 @@
 .vinyl-pin span.pin-top {
   transform: translateZ(8px);
   @apply bg-white w-[6px] h-[6px] rounded-sm;
+}
+
+.album-opem .swiper-slide:not(.swiper-slide-active) {
+  @apply opacity-0;
+}
+
+.swiper-slide-active {
+  @apply transition-ease-in-renato duration-500;
+}
+
+.album-opem .swiper-slide-active {
+  @apply -top-[87px] delay-1000 opacity-50 ;
+}
+
+.cover-record {
+  @apply h-[337px] min-h-[357px] max-w-[304px];
 }
