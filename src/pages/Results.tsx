@@ -83,13 +83,13 @@ export default function Results() {
   }, [album]);
 
   const OpenRecord = () => {
-    return setTimeout(() => {
-      // setOpenClass("open-record");
+    // return setTimeout(() => {
+    //   setOpenClass("open-record");
 
-      setTimeout(() => {
-        // setTurntableClass("opacity-1 z-[99]");
-      }, 500);
-    }, 100);
+    //   setTimeout(() => {
+    //     setTurntableClass("opacity-1 z-[99]");
+    //   }, 500);
+    // }, 100);
   };
 
   return (
@@ -100,16 +100,11 @@ export default function Results() {
         )}
       </TurnTable>
 
-      {/* <div
-        className={`glass delay-500 ${
-          album.albumOpen ? " opacity-100 visible" : "invisible opacity-0"
-        }`}
-      ></div> */}
       {
         <Carousel
           className={`${
             album.albumOpen ? "album-opem" : "scale-100"
-          } transition-ease-in-out-cubic duration-200`}
+          }`}
           loading={loadinTracks}
           items={vinyl}
         />

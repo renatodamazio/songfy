@@ -35,9 +35,9 @@ function Carousel(props: any) {
           stretch: 0,
           depth: 100,
           modifier: 1,
-          slideShadows: false,
+          slideShadows: true,
         }}
-        slidesPerView={5}
+        slidesPerView={props.items.length}
       >
         {props.items.map((item: any, key: number) => {
           return (
@@ -47,7 +47,7 @@ function Carousel(props: any) {
                   <ButtonLoading loading={props.loading} album={item} />
                   <Image
                     key={key}
-                    className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent"
+                    className="inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent record-cover"
                     src={getImageFromAPi({ images: item.image, size: 3 })}
                   />
                   <div className="vinyl-wrapper ease-out-cubic-back">

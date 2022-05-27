@@ -60,17 +60,13 @@ export default function VinylPlayer(props: any) {
     <>
       <div
         className={`${centerElement} ${className} transition-ease-in-renato`}
+        style={{ transformStyle: "preserve-3d" }}
       >
-        <div>
-          <Image
-            src={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="cover-record  inline-block z-10 relative h-full ease-out-cubic rounded-lg border-2 border-transparent -translate-x-[3px]"
-          />
-          <Vinyl
-            image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
-            className="record absolute top-1/2 left-1/2 -translate-x-1/5 -translate-y-1/2"
-          />
-        </div>
+        <Vinyl
+          image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
+          style={{ transform: `translate3d(-50%, -50%, 19px)` }}
+          className="record absolute top-1/2 left-1/2  rotate-0"
+        />
       </div>
     </>
   );

@@ -9,14 +9,6 @@
   overflow: auto;
 }
 
-.swiper {
-  max-height: calc(100vh - 150px);
-  overflow: hidden;
-}
-
-.swiper-slide:not(.slide-active) {
-  max-height: 130px;
-}
 
 .carousel-item {
   overflow: hidden;

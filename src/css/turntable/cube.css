@@ -6,7 +6,7 @@
   transform-style: preserve-3d;
   margin: 0 auto;
   width: 580px;
-  height: 300px;
+  height: 348px;
   transform: none;
 
   @apply z-10 relative transition-ease-in-out-cubic rounded-md  duration-500 flex content-center items-center;

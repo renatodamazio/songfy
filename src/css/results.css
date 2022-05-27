@@ -41,9 +41,7 @@
 }
 
 .vinyl-wrapper {
-  position: absolute;
-  top: 0;
-  transform: scale(0.88);
+  @apply top-0 absolute h-[300px] scale-[0.88]
 }
 
 .load-album {

@@ -1,0 +1,7 @@
+.swiper {
+  @apply w-full absolute h-full top-0 left-0;
+}
+
+.swiper-slide:not(.slide-active) {
+  max-height: 130px;
+}

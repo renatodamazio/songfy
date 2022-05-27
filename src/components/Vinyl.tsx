@@ -4,7 +4,7 @@ export default function vinyl(props: any) {
   const { className, image, rotate} = props;
 
   return (
-    <div className={`vinyl-disk-container ${className}`}>
+    <div className={`vinyl-disk-container ${className}`} style={props.style && props.style}>
       <div className="vinyl-reflex"></div>
 
       <div className={`vinyl-disk ${rotate ? "animate-spin duration-700" : ""}`}>

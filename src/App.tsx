@@ -9,7 +9,7 @@ function App(): any {
 
   return (
     <main className="w-screen h-screen flex flex-1 overflow-auto  p-10 align-center justify-center flex-col">
-      <TransitionGroup>
+      <TransitionGroup className={"fixed w-full h-full top-0 left-0"}>
         <div
           className={`search-component-wrapper ${
             location.pathname !== "/" ? "short-search" : ""

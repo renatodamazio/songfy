@@ -4,6 +4,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap");
 
+@import "./css/swiper.css";
 @import "./css/vinyl.css";
 @import "./css/loader.css";
 @import "./css/disks.css";
