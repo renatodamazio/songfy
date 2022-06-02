@@ -7,7 +7,7 @@ import getImageFromAPi from "../../utils/getImageFromApi";
 export default function Table(props: any) {
   const { rotate } = props;
   const [totalRounds, {}] = useState<any>([1, 2]);
-  const album:any = useSelector<any>((state) => state.albumOpen);
+  const album: any = useSelector<any>((state) => state.albumOpen);
 
   return (
     <>
@@ -21,20 +21,24 @@ export default function Table(props: any) {
         </div>
 
         <div
-          className={`${
-            rotate ? "s" : ""
-          } vinyl-on-table run-record inline-block rotate-[81deg] border-2 border-[red]`}
+          className={`vinyl-on-table run-record inline-block rotate-[81deg] border-2 border-[red]`}
         >
-          <span className="wheel">
-            <div className="vinyl-reflex"></div>
-            <span className="rotate-spin">
-              <Vinyl
-                image={getImageFromAPi({
-                  images: album?.albumOpen.image,
-                  size: 3,
-                })}
-              />
-            </span>
+          <span
+            className={`${album?.albumOpen?.artist ? "open-record" : ""} wheel`}
+          >
+            {album?.albumOpen?.artist && (
+              <>
+                <div className="vinyl-reflex"></div>
+                <span className="rotate-spin">
+                  <Vinyl
+                    image={getImageFromAPi({
+                      images: album?.albumOpen.image,
+                      size: 3,
+                    })}
+                  />
+                </span>
+              </>
+            )}
           </span>
         </div>
 

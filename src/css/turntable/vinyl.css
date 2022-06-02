@@ -5,13 +5,14 @@
 }
 
 .wheel {
-  @apply w-[300px] h-[300px];
-  transform: rotate(0deg) translateZ(12px);
+  @apply w-[300px] h-[300px] transition-ease-in-renato;
+  transform: rotate(0deg) translateZ(19px);
 }
 
 .rotate-spin {
   @apply w-[300px] h-[300px] absolute;
   animation: rotate 1.5s linear infinite;
+  animation-delay: 5s;
 }
 
 @keyframes rotate {
@@ -115,8 +116,8 @@ div.open-record {
   @apply opacity-100 delay-700;
 }
 
-div.open-record .vinyl-disk-container.record {
-  transform: translate3d(-50%, -50%, 0px) !important;
+span.open-record.wheel {
+  transform: translateZ(1px);
   @apply delay-[1800ms];
 }
 

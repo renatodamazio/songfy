@@ -4,6 +4,7 @@ interface Images {
 }
 export default function getImageFromAPi(props: Images):string {
   const { size, images } = props;
+  if (!images) return "";
   const image = images[size];
   return image["#text"];
 }
