@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Needle from "./Needle";
 import Cylinder from "../Cylinder";
@@ -7,7 +7,16 @@ import getImageFromAPi from "../../utils/getImageFromApi";
 export default function Table(props: any) {
   const { rotate } = props;
   const [totalRounds, {}] = useState<any>([1, 2]);
+  const [showVinyl, setShowVinyl] = useState<boolean>(false);
   const album: any = useSelector<any>((state) => state.albumOpen);
+
+  useEffect(() => {
+    if (album?.albumOpen?.artist) {
+      setTimeout(() => {
+        setShowVinyl(true);
+      }, 800)
+    }
+  }, [album])
 
   return (
     <>
@@ -26,7 +35,7 @@ export default function Table(props: any) {
           <span
             className={`${album?.albumOpen?.artist ? "open-record" : ""} wheel`}
           >
-            {album?.albumOpen?.artist && (
+            {showVinyl && (
               <>
                 <div className="vinyl-reflex"></div>
                 <span className="rotate-spin">

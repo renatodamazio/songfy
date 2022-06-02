@@ -105,7 +105,7 @@
 
 .album-opem .swiper-slide-active .carousel-item .vinyl-wrapper {
   animation: rollRecord 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
-  animation-delay: 0.9s;
+  animation-delay: 0.3s;
 }
 
 div.open-record {

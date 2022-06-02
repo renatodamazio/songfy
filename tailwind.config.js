@@ -1,6 +1,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    backdropFilter: {
+      'none': 'none',
+      'blur': 'blur(20px)',
+    },
     colors: {
       transparent: "#fff0",
       black: "#000814",
@@ -26,5 +30,7 @@ module.exports = {
       "ease-in-sine": "cubic-bezier(0.47, 0, 0.745, 0.715)",
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-filters'),
+  ],
 };

@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     albums: albumsReducer,
     albumOpen: albumOpenReducer,
-    albumTrack: albumTrackReducer
+    albumTrack: albumTrackReducer,
   },
 });
 
