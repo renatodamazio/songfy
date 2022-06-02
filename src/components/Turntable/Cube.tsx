@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import Vinyl from "../Vinyl";
+import { useSelector } from "react-redux";
 import Needle from "./Needle";
 import Cylinder from "../Cylinder";
+import Vinyl from "../Vinyl";
+import getImageFromAPi from "../../utils/getImageFromApi";
 export default function Table(props: any) {
   const { rotate } = props;
   const [totalRounds, {}] = useState<any>([1, 2]);
+  const album:any = useSelector<any>((state) => state.albumOpen);
 
   return (
     <>
@@ -17,8 +20,22 @@ export default function Table(props: any) {
           <span className="pin-top"></span>
         </div>
 
-        <div className="vinyl-on-table">
-          {props.vinyl}
+        <div
+          className={`${
+            rotate ? "s" : ""
+          } vinyl-on-table run-record inline-block rotate-[81deg] border-2 border-[red]`}
+        >
+          <span className="wheel">
+            <div className="vinyl-reflex"></div>
+            <span className="rotate-spin">
+              <Vinyl
+                image={getImageFromAPi({
+                  images: album?.albumOpen.image,
+                  size: 3,
+                })}
+              />
+            </span>
+          </span>
         </div>
 
         <div className="arm">
@@ -58,10 +75,22 @@ export default function Table(props: any) {
               <ul>
                 <li>Renato Damázio</li>
                 <li>
-                  <a href="https://github.com/renatodamazio" target={"_blank"} rel="noreferrer noopener">Github</a>
+                  <a
+                    href="https://github.com/renatodamazio"
+                    target={"_blank"}
+                    rel="noreferrer noopener"
+                  >
+                    Github
+                  </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/renato-dam%C3%A1zio/" target={"_blank"} rel="noreferrer noopener">Linkedin</a>
+                  <a
+                    href="https://www.linkedin.com/in/renato-dam%C3%A1zio/"
+                    target={"_blank"}
+                    rel="noreferrer noopener"
+                  >
+                    Linkedin
+                  </a>
                 </li>
               </ul>
             </span>

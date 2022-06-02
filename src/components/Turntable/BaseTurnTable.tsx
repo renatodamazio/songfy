@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Cube from "./Cube";
+
 export default function BaseTurnTable(props: any) {
   const { className } = props;
   const [rotate, setRotate] = useState(false);

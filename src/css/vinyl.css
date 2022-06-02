@@ -31,12 +31,8 @@ li.destak-cover.open-vinyl span {
 
 .vinyl-disk {
   position: absolute;
-  width: 100%;
   mix-blend-mode: hard-light;
-  max-width: 300px;
-  height: 100%;
   background: black;
-  border-radius: 100%;
   border: 8px solid #181818;
   background: repeating-radial-gradient(#000000, #141414 3px);
   overflow: hidden;
@@ -89,12 +85,4 @@ li.destak-cover.open-vinyl span {
     #ffffff33 270deg,
     transparent 270deg
   );
-}
-
-div.open-record img.cover-record {
-  /* @apply -translate-x-[200%] opacity-0; */
-}
-
-div.open-record .record {
-  /* @apply delay-1000 scale-105 left-1/2 -translate-x-1/2 z-[999]; */
 }

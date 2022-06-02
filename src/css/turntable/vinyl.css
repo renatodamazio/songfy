@@ -4,6 +4,25 @@
   @apply absolute w-[300px] h-[300px] rounded-full  z-20 translate-x-1/2 scale-105;
 }
 
+.wheel {
+  @apply w-[300px] h-[300px];
+  transform: rotate(0deg) translateZ(12px);
+}
+
+.rotate-spin {
+  @apply w-[300px] h-[300px] absolute;
+  animation: rotate 1.5s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .vinyl-on-table:before,
 .vinyl-on-table:after {
   content: "";
@@ -17,6 +36,10 @@
 
 .vinyl-on-table .vinyl-cover {
   @apply w-[90px];
+}
+
+.vinyl-on-table .vinyl-disk {
+  @apply w-[300px] h-[360px];
 }
 
 .vinyl-base {
@@ -79,9 +102,22 @@
   animation-delay: 0.9s;
 }
 
-.album-opem .swiper-slide-active  .carousel-item .vinyl-wrapper {
+.album-opem .swiper-slide-active .carousel-item .vinyl-wrapper {
   animation: rollRecord 0.3s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
   animation-delay: 0.9s;
+}
+
+div.open-record {
+  @apply opacity-100 delay-700;
+}
+
+div.open-record {
+  @apply opacity-100 delay-700;
+}
+
+div.open-record .vinyl-disk-container.record {
+  transform: translate3d(-50%, -50%, 0px) !important;
+  @apply delay-[1800ms];
 }
 
 @keyframes animateSwiperSlideActive {
@@ -98,12 +134,12 @@
     @apply opacity-0  -translate-x-[100%];
   }
   100% {
-    @apply opacity-0 invisible;  
+    @apply opacity-0 invisible;
   }
 }
 
 @keyframes rollRecord {
   100% {
-    @apply opacity-0;  
+    @apply opacity-0;
   }
 }

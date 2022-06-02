@@ -83,20 +83,16 @@ export default function Results() {
   }, [album]);
 
   const OpenRecord = () => {
-    // return setTimeout(() => {
-    //   setOpenClass("open-record");
-
-    //   setTimeout(() => {
-    //     setTurntableClass("opacity-1 z-[99]");
-    //   }, 500);
-    // }, 100);
+    return setTimeout(() => {
+      setOpenClass("open-record");
+    }, 100);
   };
 
   return (
     <>
       <TurnTable className={`${turntableClass}`}>
         {album.albumOpen && (
-          <VinylPlayer className={`opacity-100 scale-x-105 ${openClass}`} />
+          <VinylPlayer className={`opacity-0 scale-x-105 ${openClass}`}/>
         )}
       </TurnTable>
 

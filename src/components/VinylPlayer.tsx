@@ -63,6 +63,7 @@ export default function VinylPlayer(props: any) {
         style={{ transformStyle: "preserve-3d" }}
       >
         <Vinyl
+          rotate={false}
           image={getImageFromAPi({ images: albumOpen.image, size: 3 })}
           style={{ transform: `translate3d(-50%, -50%, 19px)` }}
           className="record absolute top-1/2 left-1/2  rotate-0"
