@@ -10,6 +10,7 @@ import TurnTable from "../components/Turntable";
 import getAlbumTracks, { getMockAlbumTracks } from "../api/getAlbumTrack";
 import { useSearchParams } from "react-router-dom";
 import Playlist from "../components/Playlist";
+import Video from "../components/Video";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
@@ -114,6 +115,7 @@ export default function Results() {
         />
       )}
 
+      <Video />
       <Playlist />
       {notFound ? "Não foi encontrado" : ""}
     </>

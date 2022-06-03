@@ -1,7 +1,12 @@
 .track {
-    @apply text-white inline-block p-1 w-full transition-ease-in-out-cubic;
+  @apply text-white inline-block p-1 w-full transition-ease-in-out-cubic;
 }
 
 .track:hover {
-    text-shadow: 0px 0px 9px #fff;
+  text-shadow: 0px 0px 9px #fff;
+  @apply pl-0;
+}
+
+.playlist-container {
+  @apply absolute h-full justify-center top-0 right-0 flex flex-col p-5 w-fit bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60;
 }
