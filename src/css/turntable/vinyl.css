@@ -12,7 +12,6 @@
 .rotate-spin {
   @apply w-[300px] h-[300px] absolute;
   animation: rotate 1.5s linear infinite;
-  animation-delay: 5s;
 }
 
 @keyframes rotate {

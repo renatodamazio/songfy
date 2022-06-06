@@ -3,7 +3,7 @@
   top: 10px;
   z-index: 99;
   transform-style: preserve-3d;
-  transform: rotate(90deg) translateX(47px) translateZ(-10px) translateY(-100px);
+  transform: rotate(90deg) translateX(-24px) translateZ(-42px) translateY(-60px);
   width: 300px;
   height: 39px;
 }
@@ -21,7 +21,7 @@
 
 .stick-long {
   transform-style: preserve-3d;
-  transform: rotate(90deg) translate(-113px, -42px) translateZ(41px);
+  transform: rotate(90deg) translate(-113px, -134px) translateZ(41px);
   @apply absolute top-0 w-[8px] h-[272px] bg-[#4a4a4a] rounded-md;
 }
 

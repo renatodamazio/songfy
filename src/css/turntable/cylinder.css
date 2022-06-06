@@ -5,17 +5,17 @@
 .cylinder-smaller {
   transform-style: preserve-3d;
   transform: rotateY(90deg) translateZ(-2px) translateX(-47px);
-  @apply absolute w-[60px] h-[60px] top-[-5px] left-[33px];
+  @apply absolute w-[60px] h-[60px] -top-[7px] -left-[12px];
 }
 
 .cylinder-bigger {
   transform-style: preserve-3d;
   transform: rotateY(90deg) translateZ(-2px) translateX(-33px);
-  @apply absolute w-[80px] h-[80px] left-[36px] -top-[10px];
+  @apply absolute w-[80px] h-[80px] -left-[13px] -top-[10px];
 }
 
 .cylinder-middle {
     transform-style: preserve-3d;
-    transform: rotateY(90deg) translateZ(-2px) translateX(-33px);
-    @apply absolute w-[80px] h-[80px] left-[98px] -top-[10px];
+    transform: rotateY(86deg) translateZ(-61px) translateX(-27px) translateY(-7px);
+    @apply absolute w-[80px] h-[80px] left-[40px] top-[13px];
   }

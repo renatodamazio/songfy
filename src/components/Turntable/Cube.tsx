@@ -9,14 +9,17 @@ export default function Table(props: any) {
   const [totalRounds, {}] = useState<any>([1, 2]);
   const [showVinyl, setShowVinyl] = useState<boolean>(false);
   const album: any = useSelector<any>((state) => state.albumOpen);
+  const video: any = useSelector<any>((state) => state.video);
+
+  console.log(video);
 
   useEffect(() => {
     if (album?.albumOpen?.artist) {
       setTimeout(() => {
         setShowVinyl(true);
-      }, 800)
+      }, 800);
     }
-  }, [album])
+  }, [album]);
 
   return (
     <>
@@ -30,7 +33,7 @@ export default function Table(props: any) {
         </div>
 
         <div
-          className={`vinyl-on-table run-record inline-block rotate-[81deg] border-2 border-[red]`}
+          className={`vinyl-on-table run-record inline-block rotate-[81deg]`}
         >
           <span
             className={`${album?.albumOpen?.artist ? "open-record" : ""} wheel`}
@@ -38,7 +41,7 @@ export default function Table(props: any) {
             {showVinyl && (
               <>
                 <div className="vinyl-reflex"></div>
-                <span className="rotate-spin">
+                <span className={`${video.state === 1 ? "rotate-spin" : ""}`}>
                   <Vinyl
                     image={getImageFromAPi({
                       images: album?.albumOpen.image,
@@ -52,29 +55,42 @@ export default function Table(props: any) {
         </div>
 
         <div className="arm">
-          <div className="cylinder-smaller">
-            <Cylinder total={16} />
-          </div>
-          <div className="cylinder-bigger">
-            <Cylinder total={16} />
+          <div
+            className="absolute top-0 h-full rotate-45 w-full translate-y-[9px] translate-x-[126px] transition-ease-in-renato"
+            style={{
+              transformStyle: "preserve-3d",
+              top: "-150px",
+              transform:
+                `translateZ(21px) translateX(81px) translateY(143px) skew(0deg, 0deg) rotate(${video.state === 1 ? "-333deg" : "-360deg"})`,
+            }}
+          >
+            <div className="cylinder-smaller">
+              <Cylinder total={16} />
+            </div>
+            <div className="cylinder-bigger">
+              <Cylinder total={16} />
+            </div>
+
+            <div className="stick-long">
+              <Needle />
+            </div>
           </div>
 
-          <div className="cylinder-middle">
-            <Cylinder total={30} />
-          </div>
+          <div
+            className="absolute"
+            style={{
+              transform: "translateZ(32px) translate(46px, -42px)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <div className="arm-spinner">
+              <Cylinder total={8} className="spinner-piece" />
+              <Cylinder total={23} />
+            </div>
 
-          <div className="arm-spinner">
-            <Cylinder total={8} className="spinner-piece" />
-            <Cylinder total={23} />
-          </div>
-
-          <div className="stick-round-top">
-            {totalRounds.map((item: number) => {
-              return <span key={item} className={`spot-${item}`}></span>;
-            })}
-          </div>
-          <div className="stick-long">
-            <Needle />
+            <div className="cylinder-middle">
+              <Cylinder total={30} />
+            </div>
           </div>
         </div>
         <div className="board"></div>
