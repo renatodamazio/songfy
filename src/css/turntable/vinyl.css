@@ -1,7 +1,7 @@
 .vinyl-on-table {
   perspective: 400px;
   transform-style: preserve-3d;
-  @apply absolute w-[300px] h-[300px] rounded-full  z-20 translate-x-1/2 scale-105;
+  @apply absolute w-[300px] h-[300px] rounded-full  z-20 translate-x-1/2 scale-90;
 }
 
 .wheel {
