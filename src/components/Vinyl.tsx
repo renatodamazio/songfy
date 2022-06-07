@@ -11,7 +11,7 @@ export default function vinyl(props: any) {
       }}
     >
       <Image
-        className="rounded-full w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="image-record"
         src={
           image
         }

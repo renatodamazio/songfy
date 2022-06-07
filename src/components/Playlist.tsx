@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setVideo, setTrackIndice } from "../store/reducers/VideoReducer";
 import getYoutubeVideo from "../api/getYoutubeVideo";
@@ -7,6 +7,7 @@ import { MdPlayArrow } from "react-icons/md";
 export default function Playlist(props: any) {
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
+
   const albumTracks: any = useSelector<any>(
     (state) => state?.albumTrack?.tracks
   );
@@ -16,11 +17,20 @@ export default function Playlist(props: any) {
   const findYoutubeVideoId = async (text: string, trackIndice: number) => {
     dispatch(setTrackIndice(trackIndice));
     setLoading(true);
+
     const results = await getYoutubeVideo(text);
     const videoId = results?.items[0].id.videoId;
+
     setLoading(false);
     dispatch(setVideo(videoId));
   };
+
+  useEffect(() => {
+    const track = albumTracks[indice];
+    if (typeof track === "object") {
+      findYoutubeVideoId(track.name + " " + track.artist.name, indice);
+    }
+  }, [indice]);
 
   return (
     <div className="playlist-container">

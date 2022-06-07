@@ -11,6 +11,7 @@ export default function BaseTurnTable(props: any) {
     height: "100%",
     top: 0,
     left: 0,
+    background: "hsl(0deg 0% 13%)"
   };
 
   return (

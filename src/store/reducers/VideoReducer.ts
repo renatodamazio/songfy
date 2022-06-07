@@ -11,6 +11,7 @@ const initialState = {
   progress: 0,
   state: 0,
 };
+
 const video = createSlice({
   name: "videos",
   initialState,
@@ -50,6 +51,10 @@ const video = createSlice({
     },
     setTrackIndice(state:any, action:any) {
       state.trackIndice = action.payload;
+    },
+    setIncrementTrackIndice(state:any) {
+      let indice = state.trackIndice+=1;
+      state.trackIndice = indice;
     }
   },
 });
@@ -63,6 +68,7 @@ export const {
   setTime,
   setVolume,
   setSeeking,
+  setIncrementTrackIndice,
   setTrackIndice,
   setSeekTo
 } = video.actions;

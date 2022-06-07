@@ -23,6 +23,10 @@
   }
 }
 
+.image-record {
+  @apply rounded-full w-[100px] h-[100px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-8 border-black ;
+}
+
 .vinyl-on-table:before,
 .vinyl-on-table:after {
   content: "";

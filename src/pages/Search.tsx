@@ -18,10 +18,16 @@ border-2
 border-gray
 shadow-inner
 transition-all
+duration-200
 focus:border-orange
 focus:shadow-orange
 focus:shadow-md
 shadow-sm
+bg-[#000]
+border-1
+border-[#282828]
+text-white
+shadow-[0px_0px_1px_3px_#1a1a1a]
 px-6`;
 
 export default function Home() {

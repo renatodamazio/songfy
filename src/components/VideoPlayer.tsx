@@ -7,6 +7,7 @@ import {
   setVolume,
 } from "../store/reducers/VideoReducer";
 import { useDispatch, useSelector } from "react-redux";
+import { MdPlayCircle, MdPauseCircle } from "react-icons/md";
 
 export default function VideoPlayer() {
   const dispatch = useDispatch();
@@ -18,17 +19,11 @@ export default function VideoPlayer() {
     var minutes = Math.floor((d % 3600) / 60);
     var seconds = Math.floor((d % 3600) % 60);
 
-    var hDisplay = hour >= 10 ? hour : `0${hour}`;
     var mDisplay = minutes >= 10 ? minutes : `0${minutes}`;
     var sDisplay = seconds >= 10 ? seconds : `0${seconds}`;
 
-    return hDisplay + ":" + mDisplay + ":" + sDisplay;
+    return mDisplay + ":" + sDisplay;
   }
-
-  const handlePress = (state: any) => {
-    const time = convertMsToHM(parseFloat(state.playedSeconds));
-    dispatch(setTime(time));
-  };
 
   const handleSeekMouseDown = () => {
     dispatch(setSeeking(true));
@@ -52,7 +47,7 @@ export default function VideoPlayer() {
 
   return (
     <>
-      <div className="absolute left-0 h-[10px] w-[130px] top-1/2 -translate-y-1/2 -translate-x-[40%] -rotate-90">
+      <div className="absolute left-0 h-[10px] w-[130px] top-1/2 -translate-y-1/2 -translate-x-[40%] -rotate-90 ">
         <input
           type="range"
           min={0}
@@ -62,12 +57,16 @@ export default function VideoPlayer() {
           onChange={handleVolume}
         />
       </div>
-      <div className="absolute bottom-0 content-center left-0 text-white w-full p-2 flex items-center">
+      <div className="absolute bottom-0 content-center left-0 text-white w-full p-1 flex items-center">
         <div>
           {video.play ? (
-            <button onClick={() => dispatch(setPlay(false))}>Pause</button>
+            <button onClick={() => dispatch(setPlay(false))}>
+                 <MdPauseCircle size={30}/>
+            </button>
           ) : (
-            <button onClick={() => dispatch(setPlay(true))}>Play</button>
+            <button onClick={() => dispatch(setPlay(true))}>
+                <MdPlayCircle size={30}/>
+            </button>
           )}
         </div>
         <div className="w-full px-2 flex">
