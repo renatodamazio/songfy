@@ -2,7 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   video: "",
-  state: 0
+  trackIndice: 0,
+  play: false,
+  time: {},
+  seeking: false,
+  volume: 0.491150442477876,
+  seekTo: 0,
+  progress: 0,
+  state: 0,
 };
 const video = createSlice({
   name: "videos",
@@ -13,18 +20,50 @@ const video = createSlice({
     },
     setVideo(state: any, action: any) {
       return {
-          ...state,
-          video: action.payload
-      }
+        ...state,
+        video: action.payload,
+      };
     },
     setCover(state: any, action: any) {
-      state.cover = action.playload;
+      state.cover = action.payload;
     },
     setName(state: any, action: any) {
       state.name = action.payload;
     },
+    setPlay(state: any, action: any) {
+      state.play = action.payload;
+    },
+    setTime(state: any, action: any) {
+      state.time = action.payload;
+    },
+    setProgress(state: any, action: any) {
+      state.progress = action.payload;
+    },
+    setSeeking(state: any, action: any) {
+      state.seeking = action.payload;
+    },
+    setSeekTo(state:any, action:any) {
+      state.seekTo = action.payload;
+    },
+    setVolume(state:any, action:any) {
+      state.volume = action.payload;
+    },
+    setTrackIndice(state:any, action:any) {
+      state.trackIndice = action.payload;
+    }
   },
 });
 
-export const { setState, setVideo, setCover, setName } = video.actions;
+export const {
+  setState,
+  setVideo,
+  setCover,
+  setName,
+  setPlay,
+  setTime,
+  setVolume,
+  setSeeking,
+  setTrackIndice,
+  setSeekTo
+} = video.actions;
 export default video.reducer;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setVideo } from "../store/reducers/VideoReducer";
+import { setVideo, setTrackIndice } from "../store/reducers/VideoReducer";
 import getYoutubeVideo from "../api/getYoutubeVideo";
+import { MdPlayArrow } from "react-icons/md";
 
 export default function Playlist(props: any) {
   const [loading, setLoading] = useState<boolean>(false);
@@ -10,10 +11,13 @@ export default function Playlist(props: any) {
     (state) => state?.albumTrack?.tracks
   );
 
-  const findYoutubeVideoId = async (text: string) => {
+  const indice: any = useSelector<any>((state) => state?.video?.trackIndice);
+
+  const findYoutubeVideoId = async (text: string, trackIndice: number) => {
+    dispatch(setTrackIndice(trackIndice));
     setLoading(true);
     const results = await getYoutubeVideo(text);
-    const videoId = results?.items[0].id.videoId
+    const videoId = results?.items[0].id.videoId;
     setLoading(false);
     dispatch(setVideo(videoId));
   };
@@ -24,12 +28,31 @@ export default function Playlist(props: any) {
         {albumTracks &&
           albumTracks.map((track: any, key: number) => {
             return (
-              <li key={key} className={`w-full inline-block ${loading ? 'opacity-5' : 'opacity-100'}`}>
+              <li
+                key={key}
+                className={`w-full inline-block ${
+                  loading ? "opacity-100" : "opacity-100"
+                }`}
+              >
                 <a
                   href="#!"
-                  className="track"
-                  onClick={() => findYoutubeVideoId(track.name+' '+track.artist.name)}
+                  className="track flex content-center justify-start align-middle"
+                  onClick={() =>
+                    findYoutubeVideoId(
+                      track.name + " " + track.artist.name,
+                      key
+                    )
+                  }
                 >
+                  <i
+                    className={`${
+                      indice == key
+                        ? "visible opacity-100"
+                        : "invisible opacity-0"
+                    } transition-ease-in-out-cubic flex content-center justify-center items-center mr-1`}
+                  >
+                    <MdPlayArrow />
+                  </i>
                   <i>{track.name}</i>
                 </a>
               </li>

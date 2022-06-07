@@ -4,14 +4,12 @@ import Needle from "./Needle";
 import Cylinder from "../Cylinder";
 import Vinyl from "../Vinyl";
 import getImageFromAPi from "../../utils/getImageFromApi";
+import VideoPlayer from "../VideoPlayer";
 export default function Table(props: any) {
   const { rotate } = props;
-  const [totalRounds, {}] = useState<any>([1, 2]);
   const [showVinyl, setShowVinyl] = useState<boolean>(false);
   const album: any = useSelector<any>((state) => state.albumOpen);
   const video: any = useSelector<any>((state) => state.video);
-
-  console.log(video);
 
   useEffect(() => {
     if (album?.albumOpen?.artist) {
@@ -24,6 +22,7 @@ export default function Table(props: any) {
   return (
     <>
       <div className={`${rotate ? "rotate-table" : ""} cube`}>
+
         <div className="vinyl-pin">
           <span className="pin-left"></span>
           <span className="pin-right"></span>
@@ -93,7 +92,9 @@ export default function Table(props: any) {
             </div>
           </div>
         </div>
-        <div className="board"></div>
+        <div className="board">
+          <VideoPlayer />
+        </div>
         <div className="wood-wrapper">
           <div className="wood wood-front"></div>
           <div className="wood wood-left"></div>
