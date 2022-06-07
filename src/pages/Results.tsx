@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import getAlbuns, { getMockAlbuns } from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
 import { setAlbumTrack } from "../store/reducers/albumTrackReducer";
+import { setTrackIndice } from "../store/reducers/VideoReducer";
 import Carousel from "../components/Carousel";
 import VinylPlayer from "../components/VinylPlayer";
 import TurnTable from "../components/Turntable";
@@ -22,6 +23,7 @@ export default function Results() {
   const [loadinTracks, setLoadingTracks] = useState<boolean>(false);
   const albums: any = useSelector<any>((state) => state.albums);
   const album: any = useSelector<any>((state) => state.albumOpen);
+  const tracks: any = useSelector<any>((state) => state.albumTrack);
   const location = useLocation();
   const dispatch = useDispatch();
   const [{}, setSearchParams] = useSearchParams();
@@ -93,9 +95,15 @@ export default function Results() {
     }
   }, [album]);
 
+  const startFirstTrack = () => {
+    const button: any = document.querySelectorAll(".track")[0];
+    button.click();
+  };
+
   const OpenRecord = () => {
     return setTimeout(() => {
       setOpenClass("open-record");
+      startFirstTrack();
     }, 100);
   };
 

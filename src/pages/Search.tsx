@@ -71,7 +71,7 @@ export default function Home() {
         {loading ? <Loader className="absolute top-0 right-0" /> : ""}
       </div>
       {artists.length > 0 ? (
-        <ul className="transition-all rounded-md shadow-inner shadow-md border-gray shadow-sm-gray p-4">
+        <ul className="transition-all rounded-md shadow-md border-gray shadow-sm-gray p-4">
           {artists.map((artist: any, key: number) => {
             return (
               <li key={key} className="">

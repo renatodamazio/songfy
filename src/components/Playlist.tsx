@@ -4,7 +4,7 @@ import { setVideo, setTrackIndice } from "../store/reducers/VideoReducer";
 import getYoutubeVideo from "../api/getYoutubeVideo";
 import { MdPlayArrow } from "react-icons/md";
 
-export default function Playlist(props: any) {
+export default function Playlist() {
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
 

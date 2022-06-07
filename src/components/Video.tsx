@@ -19,7 +19,7 @@ export default function Video() {
   }, [youtubeVideoItems.seekTo]);
 
   return (
-    <div className="hidden">
+    <div className="">
       <ReactPlayer
         ref={videoPlayer}
         volume={youtubeVideoItems.volume}
