@@ -18,8 +18,8 @@ export default function Playlist() {
     dispatch(setTrackIndice(trackIndice));
     setLoading(true);
 
-    const results = await getYoutubeVideo(text);
-    const videoId = results?.items[0].id.videoId;
+    const results = await getYoutubeVideo(text.replace(/ {1}/gi, "+"));
+    const videoId = results[0].id;
 
     setLoading(false);
     dispatch(setVideo(videoId));
