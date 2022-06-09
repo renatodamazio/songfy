@@ -3,7 +3,7 @@ export default function getAlbuns(query:string):object {
     const getAlbum = async () => {
         return await fetch(url)
           .then((json) => json.json())
-          .then(({ topalbums }) => console.log(JSON.stringify(topalbums)))
+          .then(({ topalbums }) => topalbums)
           .catch((err) => new Error(err));
       };
     

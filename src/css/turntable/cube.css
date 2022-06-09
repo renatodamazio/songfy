@@ -69,7 +69,7 @@
 
 .cover-bg img {
   object-fit: cover;
-  @apply w-full h-full fixed;
+  @apply w-full h-full fixed transition-ease-in-sine delay-1000;
 }
 
 .cover-bg:before {

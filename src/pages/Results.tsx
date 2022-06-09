@@ -30,7 +30,7 @@ export default function Results() {
 
   const getArtistAlbums = async (query: string) => {
     setLoading(true);
-    const artistAlbums = await getMockAlbuns();
+    const artistAlbums = await getAlbuns(query);
     dispatch(setAlbums(artistAlbums));
     setLoading(false);
   };
