@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Needle from "./Needle";
 import Cylinder from "../Cylinder";
 import Vinyl from "../Vinyl";
 import getImageFromAPi from "../../utils/getImageFromApi";
 import VideoPlayer from "../VideoPlayer";
+import { setThumbColors } from "../../store/reducers/VideoReducer";
+
+const Vibrant = require("node-vibrant");
+
 export default function Table(props: any) {
   const { rotate } = props;
   const [showVinyl, setShowVinyl] = useState<boolean>(false);
   const album: any = useSelector<any>((state) => state.albumOpen);
   const video: any = useSelector<any>((state) => state.video);
+  const [ledColor, setLedColor] = useState();
+  const dispatch = useDispatch();
+  let startLedAnimation: any;
 
   useEffect(() => {
     if (album?.albumOpen?.artist) {
@@ -19,10 +26,60 @@ export default function Table(props: any) {
     }
   }, [album]);
 
+  useEffect(() => {
+    if (video.state === 1) {
+      vinylLed();
+    }
+  }, [video.state]);
+
+  useEffect(() => {
+    if (video.state === 1) {
+      vinylLed();
+    }
+  }, [video.thumbColors]);
+
+  const vinylLed = (status?: number) => {
+    let indice = 0;
+
+    const limit = video.thumbColors.length - 1;
+    const color = video.thumbColors;
+
+    setLedColor(color[indice]?.hex);
+
+    startLedAnimation = setInterval(() => {
+      indice++;
+      if (indice === limit) indice = 0;
+      setLedColor(color[indice]?.hex);
+    }, 2800);
+  };
+
+  const getCollorPaletteFromYtCover = (e: any) => {
+    Vibrant.from(`${e.target.src}`)
+      .maxColorCount(200)
+      .getPalette()
+      .then((palette: any) => {
+        const colors = [];
+
+        for (let color in palette) {
+          const hex = palette[color].getHex();
+
+          colors.push({ hex });
+        }
+
+        dispatch(setThumbColors(colors));
+      })
+      .catch((err: any) => console.log(err));
+  };
+
   return (
     <>
+      <div className="cover-bg">
+        <img
+          src={video.thumbnail}
+          onLoad={(e) => getCollorPaletteFromYtCover(e)}
+        />
+      </div>
       <div className={`${rotate ? "rotate-table" : ""} cube`}>
-
         <div className="vinyl-pin">
           <span className="pin-left"></span>
           <span className="pin-right"></span>
@@ -51,6 +108,17 @@ export default function Table(props: any) {
               </>
             )}
           </span>
+          <span
+            className="vinyl-led"
+            style={{
+              boxShadow:
+                video.state === 1
+                  ? `0px 0px 12px 6px ${ledColor}`
+                  : `0px 0px 0px 6px #000`,
+              border:
+                video.state === 1 ? `1px solid ${ledColor}` : `1px solid #000`,
+            }}
+          ></span>
         </div>
 
         <div className="arm">
@@ -59,8 +127,9 @@ export default function Table(props: any) {
             style={{
               transformStyle: "preserve-3d",
               top: "-150px",
-              transform:
-                `translateZ(21px) translateX(81px) translateY(143px) skew(0deg, 0deg) rotate(${video.state === 1 ? "-333deg" : "-360deg"})`,
+              transform: `translateZ(21px) translateX(81px) translateY(143px) skew(0deg, 0deg) rotate(${
+                video.state === 1 ? "-333deg" : "-360deg"
+              })`,
             }}
           >
             <div className="cylinder-smaller">

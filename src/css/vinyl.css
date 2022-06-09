@@ -86,3 +86,8 @@ li.destak-cover.open-vinyl span {
     transparent 270deg
   );
 }
+
+.vinyl-led {
+  transition: .500s ease-in-out;
+  @apply absolute w-[330px] h-[330px] bg-black rounded-full z-[9999];
+}

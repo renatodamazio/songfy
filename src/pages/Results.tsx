@@ -50,8 +50,7 @@ export default function Results() {
     const { artist, album } = props;
     setLoadingTracks(true);
 
-    // const albumTracks: any = await getAlbumTracks(artist, album);
-    const albumTracks: any = getMockAlbumTracks();
+    const albumTracks: any = await getAlbumTracks(artist, album);
     const tracks = albumTracks?.tracks?.track || albumTracks;
     setLoadingTracks(false);
 

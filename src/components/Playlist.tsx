@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setVideo, setTrackIndice } from "../store/reducers/VideoReducer";
+import { setVideo, setTrackIndice, setThumbnail } from "../store/reducers/VideoReducer";
 import getYoutubeVideo from "../api/getYoutubeVideo";
 import { MdPlayArrow } from "react-icons/md";
 
@@ -20,9 +20,10 @@ export default function Playlist() {
 
     const results = await getYoutubeVideo(text.replace(/ {1}/gi, "+"));
     const videoId = results[0].id;
-
+    const thumbnail = results[0].thumbnail;
     setLoading(false);
     dispatch(setVideo(videoId));
+    dispatch(setThumbnail(thumbnail))
   };
 
   useEffect(() => {

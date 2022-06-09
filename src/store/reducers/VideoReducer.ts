@@ -6,10 +6,12 @@ const initialState = {
   play: false,
   time: {},
   seeking: false,
+  thumbnail: "",
   volume: 0.491150442477876,
   seekTo: 0,
   progress: 0,
   state: 0,
+  thumbColors: {}
 };
 
 const video = createSlice({
@@ -55,6 +57,12 @@ const video = createSlice({
     setIncrementTrackIndice(state:any) {
       let indice = state.trackIndice+=1;
       state.trackIndice = indice;
+    },
+    setThumbnail(state:any, action:any) {
+      state.thumbnail = action.payload;
+    },
+    setThumbColors(state:any, action:any) {
+      state.thumbColors = action.payload;
     }
   },
 });
@@ -68,8 +76,10 @@ export const {
   setTime,
   setVolume,
   setSeeking,
+  setThumbnail,
   setIncrementTrackIndice,
   setTrackIndice,
+  setThumbColors,
   setSeekTo
 } = video.actions;
 export default video.reducer;

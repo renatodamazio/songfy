@@ -1,4 +1,3 @@
-import React from "react";
 import {
   setPlay,
   setTime,
@@ -15,7 +14,6 @@ export default function VideoPlayer() {
 
   function convertMsToHM(time: number) {
     let d = Number(time);
-    var hour = Math.floor(d / 3600);
     var minutes = Math.floor((d % 3600) / 60);
     var seconds = Math.floor((d % 3600) % 60);
 
