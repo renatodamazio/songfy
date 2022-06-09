@@ -23,10 +23,9 @@ focus:border-orange
 focus:shadow-orange
 focus:shadow-md
 shadow-sm
-bg-[#000]
 border-1
+bg-transparent
 border-[#282828]
-text-white
 shadow-[0px_0px_1px_3px_#1a1a1a]
 px-6`;
 
@@ -59,24 +58,25 @@ export default function Home() {
 
   return (
     <>
-      <div className={`input-search-wrapper  ${loading ? "loading" : ""}`}>
+      <div className={`relative glass-morphism  ${loading ? "loading" : ""}`}>
         <DebounceInput
           type="search"
           placeholder="O que gostaria de ouvir ?"
           autoFocus
           debounceTimeout={300}
+          style={{color: "#fff"}}
           onChange={async (ev) => await getArtistsFromLastFM(ev.target.value)}
           className={classNames}
         />
         {loading ? <Loader className="absolute top-0 right-0" /> : ""}
       </div>
       {artists.length > 0 ? (
-        <ul className="transition-all rounded-md shadow-md border-gray shadow-sm-gray p-4">
+        <ul className="suggestion-list glass-morphism">
           {artists.map((artist: any, key: number) => {
             return (
               <li key={key} className="">
                 <Link
-                  className="flex font-bold rounded-md transition-colors cursor-pointer hover:text-white-egg hover:bg-orange p-2"
+                  className="suggestion-item"
                   to={"#"}
                   onClick={() => redirectToResultsPage(`${artist.name}`)}
                 >

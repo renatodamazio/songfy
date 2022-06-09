@@ -37,3 +37,7 @@ body,
 .table-rotate {
   transform: rotateZ(-19deg) skewX(29deg) rotateX(42deg);
 }
+
+.glass-morphism {
+  @apply bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60;
+}
