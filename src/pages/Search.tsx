@@ -6,7 +6,10 @@ import searchArtist from "../api/searchArtist";
 import Loader from "../components/Loader";
 import { useDispatch } from "react-redux";
 import { setAlbums } from "../store/reducers/albumsReducer";
+import { setAlbumTrack } from "../store/reducers/albumTrackReducer";
 import { useNavigate } from "react-router-dom";
+import { setOpen } from "../store/reducers/albumOpenReducer";
+
 const classNames = `
 rounded-md 
 w-full h-20 
@@ -35,6 +38,11 @@ export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const resetCurrentResult = () => {
+    dispatch(setOpen(false));
+    dispatch(setAlbumTrack([]));
+  }
+
   const getArtistsFromLastFM = async (query: string) => {
     if (query.replace(/ {1}/gi, "").length === 0) {
       setArtists([]);
@@ -47,6 +55,7 @@ export default function Home() {
   };
 
   const redirectToResultsPage = async (query: string) => {
+    resetCurrentResult();
     setLoading(true);
     const albums: any = await getAlbuns(query);
     
