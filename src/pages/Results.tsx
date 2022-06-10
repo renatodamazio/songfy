@@ -1,17 +1,17 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import getAlbuns, { getMockAlbuns } from "../api/getAlbuns";
+import getAlbuns from "../api/getAlbuns";
 import { setAlbums } from "../store/reducers/albumsReducer";
 import { setAlbumTrack } from "../store/reducers/albumTrackReducer";
-import { setTrackIndice } from "../store/reducers/VideoReducer";
 import Carousel from "../components/Carousel";
 import VinylPlayer from "../components/VinylPlayer";
 import TurnTable from "../components/Turntable";
-import getAlbumTracks, { getMockAlbumTracks } from "../api/getAlbumTrack";
+import getAlbumTracks from "../api/getAlbumTrack";
 import { useSearchParams } from "react-router-dom";
 import Playlist from "../components/Playlist";
 import Video from "../components/Video";
+import AlbumsList from "../components/AlbumsList";
 
 export default function Results() {
   const [notFound, setNotFound] = useState<boolean>(false);
@@ -19,11 +19,10 @@ export default function Results() {
   const [vinyl, setVinyl] = useState<any>([]);
   const [showCarousel, setShowCarousel] = useState<boolean>(true);
   const [openClass, setOpenClass] = useState<any>([]);
-  const [turntableClass, setTurntableClass] = useState<any>([]);
+  const [turntableClass, {}] = useState<any>([]);
   const [loadinTracks, setLoadingTracks] = useState<boolean>(false);
   const albums: any = useSelector<any>((state) => state.albums);
   const album: any = useSelector<any>((state) => state.albumOpen);
-  const tracks: any = useSelector<any>((state) => state.albumTrack);
   const location = useLocation();
   const dispatch = useDispatch();
   const [{}, setSearchParams] = useSearchParams();
@@ -108,6 +107,8 @@ export default function Results() {
 
   return (
     <>
+      <AlbumsList albums={albums} />
+
       <TurnTable className={`${turntableClass}`}>
         {album.albumOpen && (
           <VinylPlayer className={`opacity-0 scale-x-105 ${openClass}`} />

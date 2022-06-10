@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MdPlayArrow } from "react-icons/md";
 import Loader from "../components/Loader";
 import { setOpen } from "../store/reducers/albumOpenReducer";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function ButtonLoading(props: any) {
   const { album } = props;
