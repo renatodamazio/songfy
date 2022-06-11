@@ -1,0 +1,15 @@
+.album-list {
+    @apply  h-[200px]  w-[70%] absolute bottom-0 left-1/2 -translate-x-1/2 z-20 text-white transition-ease-in-renato px-4;
+}
+
+.album-list .swiper-slide-active {
+    @apply scale-110;
+}
+
+.album-list .swiper-slide-active img {
+    @apply shadow-2xl shadow-orange-dark border-2 border-transparent;
+}
+
+.album-list .swiper-free-mode>.swiper-wrapper{
+    @apply py-3
+}
